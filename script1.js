@@ -73,6 +73,21 @@ function handleMove(evt) {
 
     if (idx >= 0) {
       log("continuing touch "+idx);
+	  
+		var query = document.getElementById("questionAlpha").children[leftIndex];
+	  if (ongoingTouches[idx].pageX > 40 && ongoingTouches[idx].pageX < 301){
+		  ctx.beginPath();
+		   log("ctx.moveTo(" + ongoingTouches[idx].pageX + ", " + ongoingTouches[idx].pageY + ");");
+		  ctx.moveTo(ongoingTouches[idx].pageX, ongoingTouches[idx].pageY);
+		  log("ctx.lineTo(" + touches[i].pageX + ", " + touches[i].pageY + ");");
+		  ctx.lineTo(touches[i].pageX, touches[i].pageY);
+		  ctx.lineWidth = 4;
+		  ctx.strokeStyle = color;
+		  ctx.stroke();
+
+		  ongoingTouches.splice(idx, 1, copyTouch(touches[i]));  // swap in the new touch record
+		  // log(".");
+	  }
 	  if (leftIndex == null){
 		   // var yDiv = touches[i].pageY /60;
 		  // var yMod = touches[i].pageY %60;
@@ -110,20 +125,6 @@ function handleMove(evt) {
 				  leftIndex = 4;
 			  }
 		  }
-	  }
-		var query = document.getElementById("questionAlpha").children[leftIndex];
-	  if (ongoingTouches[idx].pageX > 40 && ongoingTouches[idx].pageX < 301){
-		  ctx.beginPath();
-		   log("ctx.moveTo(" + ongoingTouches[idx].pageX + ", " + ongoingTouches[idx].pageY + ");");
-		  ctx.moveTo(ongoingTouches[idx].pageX, ongoingTouches[idx].pageY);
-		  log("ctx.lineTo(" + touches[i].pageX + ", " + touches[i].pageY + ");");
-		  ctx.lineTo(touches[i].pageX, touches[i].pageY);
-		  ctx.lineWidth = 4;
-		  ctx.strokeStyle = color;
-		  ctx.stroke();
-
-		  ongoingTouches.splice(idx, 1, copyTouch(touches[i]));  // swap in the new touch record
-		  // log(".");
 	  }
 	  if (rightIndex == null){
 		  if ((ongoingTouches[idx].pageX > 150)){
