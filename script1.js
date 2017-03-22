@@ -53,11 +53,11 @@ function handleStart(evt) {
     log("touchstart:" + i + "...");
     ongoingTouches.push(copyTouch(touches[i]));
 	var color = colorForTouch(touches[i]);
-    // ctx.beginPath();
-    // ctx.arc(touches[i].pageX, touches[i].pageY, 4, 0, 2 * Math.PI, false);  // a circle at the start
-    // ctx.fillStyle = color;
-    // ctx.fill();
-    // log("touchstart:" + i + ".");
+    ctx.beginPath();
+    ctx.arc(touches[i].pageX, touches[i].pageY, 4, 0, 2 * Math.PI, false);  // a circle at the start
+    ctx.fillStyle = color;
+    ctx.fill();
+    log("touchstart:" + i + ".");
   }
 }
 
@@ -74,24 +74,40 @@ function handleMove(evt) {
     if (idx >= 0) {
       log("continuing touch "+idx);
 	  if (leftIndex == null){
-		   var yDiv = ongoingTouches[idx].pageY/60;
-		  var yMod = ongoingTouches[idx].pageY%60;
-		  if((yDiv == 0 && yMod >= 0 && yMod <= 60 ) || (yDiv == 1 && yMod == 0)){
+		   // var yDiv = touches[i].pageY /60;
+		  // var yMod = touches[i].pageY %60;
+		  // if((yDiv == 0 && yMod >= 0 && yMod <= 60 ) || (yDiv == 1 && yMod == 0)){
+			  // leftIndex = 0;
+		  // }
+		  // if((yDiv == 1 && yMod >= 0 && yMod <= 60 ) || (yDiv == 2 && yMod == 0)){
+			  // leftIndex = 1;
+		  // }
+		  // if((yDiv == 2 && yMod >= 0 && yMod <= 60 ) || (yDiv == 3 && yMod == 0)){
+			  // leftIndex = 2;
+		  // }
+		  // if((yDiv == 3 && yMod >= 0 && yMod <= 60 ) || (yDiv == 4 && yMod == 0)){
+			  // leftIndex = 3;
+		  // }
+		  // if((yDiv == 4 && yMod >= 0 && yMod <= 60 ) || (yDiv == 5 && yMod == 0)){
+			  // leftIndex = 4;
+		  // }
+		  // log("leftIndex "+ leftIndex);
+		  
+		  if(ongoingTouches[idx].pageY >= 0 && ongoingTouches[idx].pageY <= 60){
 			  leftIndex = 0;
 		  }
-		  if((yDiv == 1 && yMod >= 0 && yMod <= 60 ) || (yDiv == 2 && yMod == 0)){
+		  if(ongoingTouches[idx].pageY > 60 && ongoingTouches[idx].pageY <= 120){
 			  leftIndex = 1;
 		  }
-		  if((yDiv == 2 && yMod >= 0 && yMod <= 60 ) || (yDiv == 3 && yMod == 0)){
+		  if(ongoingTouches[idx].pageY > 120 && ongoingTouches[idx].pageY <= 180){
 			  leftIndex = 2;
 		  }
-		  if((yDiv == 3 && yMod >= 0 && yMod <= 60 ) || (yDiv == 4 && yMod == 0)){
+		  if(ongoingTouches[idx].pageY > 180 && ongoingTouches[idx].pageY <= 240){
 			  leftIndex = 3;
 		  }
-		  if((yDiv == 4 && yMod >= 0 && yMod <= 60 ) || (yDiv == 5 && yMod == 0)){
+		  if(ongoingTouches[idx].pageY > 240 && ongoingTouches[idx].pageY <= 300){
 			  leftIndex = 4;
 		  }
-		  log("leftIndex "+ leftIndex);
 	  }
 		var query = document.getElementById("questionAlpha").children[leftIndex];
 	  if (ongoingTouches[idx].pageX > 40 && ongoingTouches[idx].pageX < 301){
@@ -109,8 +125,8 @@ function handleMove(evt) {
 	  }
 	  if (rightIndex == null){
 		  if ((ongoingTouches[idx].pageX > 150)){
-			  var yDiv = ongoingTouches[idx].pageY/60;
-			  var yMod = ongoingTouches[idx].pageY%60;
+			  var yDiv = touches[i].pageY /60;
+			  var yMod = touches[i].pageY %60;
 			  if((yDiv == 0 && yMod >= 0 && yMod <= 60 ) || (yDiv == 1 && yMod == 0)){
 				  rightIndex = 0;
 			  }
