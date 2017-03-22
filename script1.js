@@ -106,7 +106,7 @@ function handleMove(evt) {
 		  ongoingTouches.splice(idx, 1, copyTouch(touches[i]));  // swap in the new touch record
 		  // log(".");
 	  }
-     if ((ongoingTouches[idx].pageX > 300 && ongoingTouches[idx].pageX < 350)){
+     if ((ongoingTouches[idx].pageX > 150 && ongoingTouches[idx].pageX < 200)){
 		  var yDiv = ongoingTouches[idx].pageY/60;
 		  var yMod = ongoingTouches[idx].pageY%60;
 		  if((yDiv == 0 && yMod > 0 && yMod < 60 ) || (yDiv == 1 && yMod == 0)){
