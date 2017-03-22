@@ -7,7 +7,8 @@ function matchTheColumn(){
 	rightValues.push("Apple","Ball","Cat","Doll","Elephant");
 	list.push({leftColumn: ["A","B","C","D","E"],
 		rightColumn: [3,2,5,1,4],
-		rightAns:[4,2,1,5,3]});
+		rightAns:[4,2,1,5,3],
+		traversed:[false,false,false,false,false]});
 	fillValues();
 }
 
@@ -150,13 +151,10 @@ function handleMove(evt) {
 		 }
 	  }
 	  if (rightIndex == list[0].rightAns[leftIndex]){
-		  log("Correct Match");
-		  leftIndex = null;
-		  rightIndex = null;
+		  log("Correct Match for "+list[0].leftColumn[leftIndex]);
 	  }
 	  else{
-		  leftIndex = null;
-		  rightIndex = null;
+	
 	  }
      
     } else {
