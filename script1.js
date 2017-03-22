@@ -44,6 +44,7 @@ function startup() {
   log("initialized.");
 }
 
+var imageData;
 var ongoingTouches = [];
 
 function handleStart(evt) {
@@ -52,6 +53,7 @@ function handleStart(evt) {
   var el = document.getElementsByTagName("canvas")[0];
   var ctx = el.getContext("2d");
   var touches = evt.changedTouches;
+  imageData = ctx.getImageData(0,0,el.width,el.height);
   end = 0;
   for (var i = 0; i < touches.length; i++) {
     // log("touchstart:" + i + "...");
@@ -165,11 +167,13 @@ function handleMove(evt) {
   if ((rightIndex+1) == list[0].rightAns[leftIndex]){
 	  log("Correct Match for "+list[0].leftColumn[leftIndex]);
 	  list[0].traversed[leftIndex] = true;
-	  log(list[0].leftColumn[leftIndex] + list[0].traversed[leftIndex])
+	  log(list[0].leftColumn[leftIndex] + list[0].traversed[leftIndex]);
+	  imageData = context.getImageData(0,0,canvas.width,canvas.height);
 	  // leftIndex = null;
 	  // rightIndex = null;
   }
   else{
+	  imageData = context.putImageData(0,0,canvas.width,canvas.height);
 	  // leftIndex = null;
 	  // rightIndex = null;
   }
