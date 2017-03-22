@@ -151,6 +151,12 @@ function handleMove(evt) {
 	  }
 	  if (rightIndex == list[0].rightAns[leftIndex]){
 		  log("Correct Match");
+		  leftIndex = null;
+		  rightIndex = null;
+	  }
+	  else{
+		  leftIndex = null;
+		  rightIndex = null;
 	  }
      
     } else {
