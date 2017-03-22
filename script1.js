@@ -93,20 +93,22 @@ function handleMove(evt) {
 		  // }
 		  // log("leftIndex "+ leftIndex);
 		  
-		  if(ongoingTouches[idx].pageY >= 0 && ongoingTouches[idx].pageY <= 60){
-			  leftIndex = 0;
-		  }
-		  if(ongoingTouches[idx].pageY > 60 && ongoingTouches[idx].pageY <= 120){
-			  leftIndex = 1;
-		  }
-		  if(ongoingTouches[idx].pageY > 120 && ongoingTouches[idx].pageY <= 180){
-			  leftIndex = 2;
-		  }
-		  if(ongoingTouches[idx].pageY > 180 && ongoingTouches[idx].pageY <= 240){
-			  leftIndex = 3;
-		  }
-		  if(ongoingTouches[idx].pageY > 240 && ongoingTouches[idx].pageY <= 300){
-			  leftIndex = 4;
+		  if (ongoingTouches[idx].pageX > 0){
+			  if(ongoingTouches[idx].pageY >= 0 && ongoingTouches[idx].pageY <= 60){
+				  leftIndex = 0;
+			  }
+			  if(ongoingTouches[idx].pageY > 60 && ongoingTouches[idx].pageY <= 120){
+				  leftIndex = 1;
+			  }
+			  if(ongoingTouches[idx].pageY > 120 && ongoingTouches[idx].pageY <= 180){
+				  leftIndex = 2;
+			  }
+			  if(ongoingTouches[idx].pageY > 180 && ongoingTouches[idx].pageY <= 240){
+				  leftIndex = 3;
+			  }
+			  if(ongoingTouches[idx].pageY > 240 && ongoingTouches[idx].pageY <= 300){
+				  leftIndex = 4;
+			  }
 		  }
 	  }
 		var query = document.getElementById("questionAlpha").children[leftIndex];
