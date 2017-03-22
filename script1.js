@@ -20,7 +20,15 @@ function fillValues(){
 		
 		lCol.appendChild(qPara);
 	}
+	for (var i=0;i<list[0].rightColumn.length;i++){
+		var rCol = document.getElementById("answerImage");
 	
+		var aPara = document.createElement("p");
+		aPara.setAttribute("style","font-size:50; width:250px;height:60");
+		aPara.innerHTML = rightValues[list[0].rightColumn[i]-1];
+		
+		rCol.appendChild(aPara);
+	}
 }
 function startup() {
   var el = document.getElementsByTagName("canvas")[0];
@@ -82,9 +90,10 @@ function handleMove(evt) {
 		  if((yDiv == 4 && yMod > 0 && yMod < 60 ) || (yDiv == 5 && yMod == 0)){
 			  leftIndex = 4;
 		  }
+		  log("leftIndex "+ leftIndex);
 	  }
 		var query = document.getElementById("questionAlpha").children[leftIndex];
-	  if (ongoingTouches[idx].pageX > 40){
+	  if (ongoingTouches[idx].pageX > 40 && ongoingTouches[idx].pageX < 301){
 		  ctx.beginPath();
 		   // log("ctx.moveTo(" + ongoingTouches[idx].pageX + ", " + ongoingTouches[idx].pageY + ");");
 		  ctx.moveTo(ongoingTouches[idx].pageX, ongoingTouches[idx].pageY);
@@ -97,7 +106,26 @@ function handleMove(evt) {
 		  ongoingTouches.splice(idx, 1, copyTouch(touches[i]));  // swap in the new touch record
 		  // log(".");
 	  }
-     
+     if ((ongoingTouches[idx].pageX > 300 && ongoingTouches[idx].pageX < 350)){
+		  var yDiv = ongoingTouches[idx].pageY/60;
+		  var yMod = ongoingTouches[idx].pageY%60;
+		  if((yDiv == 0 && yMod > 0 && yMod < 60 ) || (yDiv == 1 && yMod == 0)){
+			  rightIndex = 0;
+		  }
+		  if((yDiv == 1 && yMod > 0 && yMod < 60 ) || (yDiv == 2 && yMod == 0)){
+			  rightIndex = 1;
+		  }
+		  if((yDiv == 2 && yMod > 0 && yMod < 60 ) || (yDiv == 3 && yMod == 0)){
+			  rightIndex = 2;
+		  }
+		  if((yDiv == 3 && yMod > 0 && yMod < 60 ) || (yDiv == 4 && yMod == 0)){
+			  rightIndex = 3;
+		  }
+		  if((yDiv == 4 && yMod > 0 && yMod < 60 ) || (yDiv == 5 && yMod == 0)){
+			  rightIndex = 4;
+		  }
+		  log("rightIndex "+ rightIndex);
+	 }
     } else {
       log("can't figure out which touch to continue");
     }
