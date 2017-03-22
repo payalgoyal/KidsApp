@@ -1,4 +1,5 @@
 var leftIndex = null;
+var rightIndex = null;
 var list = [];
 var rightValues = [];
 function matchTheColumn(){
@@ -51,7 +52,7 @@ function handleStart(evt) {
   for (var i = 0; i < touches.length; i++) {
     log("touchstart:" + i + "...");
     ongoingTouches.push(copyTouch(touches[i]));
-    // var color = colorForTouch(touches[i]);
+	var color = colorForTouch(touches[i]);
     // ctx.beginPath();
     // ctx.arc(touches[i].pageX, touches[i].pageY, 4, 0, 2 * Math.PI, false);  // a circle at the start
     // ctx.fillStyle = color;
@@ -71,23 +72,23 @@ function handleMove(evt) {
     var idx = ongoingTouchIndexById(touches[i].identifier);
 
     if (idx >= 0) {
-      // log("continuing touch "+idx);
+      log("continuing touch "+idx);
 	  if (leftIndex == null){
 		   var yDiv = ongoingTouches[idx].pageY/60;
 		  var yMod = ongoingTouches[idx].pageY%60;
-		  if((yDiv == 0 && yMod > 0 && yMod < 60 ) || (yDiv == 1 && yMod == 0)){
+		  if((yDiv == 0 && yMod >= 0 && yMod <= 60 ) || (yDiv == 1 && yMod == 0)){
 			  leftIndex = 0;
 		  }
-		  if((yDiv == 1 && yMod > 0 && yMod < 60 ) || (yDiv == 2 && yMod == 0)){
+		  if((yDiv == 1 && yMod >= 0 && yMod <= 60 ) || (yDiv == 2 && yMod == 0)){
 			  leftIndex = 1;
 		  }
-		  if((yDiv == 2 && yMod > 0 && yMod < 60 ) || (yDiv == 3 && yMod == 0)){
+		  if((yDiv == 2 && yMod >= 0 && yMod <= 60 ) || (yDiv == 3 && yMod == 0)){
 			  leftIndex = 2;
 		  }
-		  if((yDiv == 3 && yMod > 0 && yMod < 60 ) || (yDiv == 4 && yMod == 0)){
+		  if((yDiv == 3 && yMod >= 0 && yMod <= 60 ) || (yDiv == 4 && yMod == 0)){
 			  leftIndex = 3;
 		  }
-		  if((yDiv == 4 && yMod > 0 && yMod < 60 ) || (yDiv == 5 && yMod == 0)){
+		  if((yDiv == 4 && yMod >= 0 && yMod <= 60 ) || (yDiv == 5 && yMod == 0)){
 			  leftIndex = 4;
 		  }
 		  log("leftIndex "+ leftIndex);
@@ -95,9 +96,9 @@ function handleMove(evt) {
 		var query = document.getElementById("questionAlpha").children[leftIndex];
 	  if (ongoingTouches[idx].pageX > 40 && ongoingTouches[idx].pageX < 301){
 		  ctx.beginPath();
-		   // log("ctx.moveTo(" + ongoingTouches[idx].pageX + ", " + ongoingTouches[idx].pageY + ");");
+		   log("ctx.moveTo(" + ongoingTouches[idx].pageX + ", " + ongoingTouches[idx].pageY + ");");
 		  ctx.moveTo(ongoingTouches[idx].pageX, ongoingTouches[idx].pageY);
-		  // log("ctx.lineTo(" + touches[i].pageX + ", " + touches[i].pageY + ");");
+		  log("ctx.lineTo(" + touches[i].pageX + ", " + touches[i].pageY + ");");
 		  ctx.lineTo(touches[i].pageX, touches[i].pageY);
 		  ctx.lineWidth = 4;
 		  ctx.strokeStyle = color;
@@ -106,26 +107,29 @@ function handleMove(evt) {
 		  ongoingTouches.splice(idx, 1, copyTouch(touches[i]));  // swap in the new touch record
 		  // log(".");
 	  }
-     if ((ongoingTouches[idx].pageX > 150 && ongoingTouches[idx].pageX < 200)){
-		  var yDiv = ongoingTouches[idx].pageY/60;
-		  var yMod = ongoingTouches[idx].pageY%60;
-		  if((yDiv == 0 && yMod > 0 && yMod < 60 ) || (yDiv == 1 && yMod == 0)){
-			  rightIndex = 0;
-		  }
-		  if((yDiv == 1 && yMod > 0 && yMod < 60 ) || (yDiv == 2 && yMod == 0)){
-			  rightIndex = 1;
-		  }
-		  if((yDiv == 2 && yMod > 0 && yMod < 60 ) || (yDiv == 3 && yMod == 0)){
-			  rightIndex = 2;
-		  }
-		  if((yDiv == 3 && yMod > 0 && yMod < 60 ) || (yDiv == 4 && yMod == 0)){
-			  rightIndex = 3;
-		  }
-		  if((yDiv == 4 && yMod > 0 && yMod < 60 ) || (yDiv == 5 && yMod == 0)){
-			  rightIndex = 4;
-		  }
-		  log("rightIndex "+ rightIndex);
-	 }
+	  if (rightIndex == null){
+		  if ((ongoingTouches[idx].pageX > 150)){
+			  var yDiv = ongoingTouches[idx].pageY/60;
+			  var yMod = ongoingTouches[idx].pageY%60;
+			  if((yDiv == 0 && yMod >= 0 && yMod <= 60 ) || (yDiv == 1 && yMod == 0)){
+				  rightIndex = 0;
+			  }
+			  if((yDiv == 1 && yMod >= 0 && yMod <= 60 ) || (yDiv == 2 && yMod == 0)){
+				  rightIndex = 1;
+			  }
+			  if((yDiv == 2 && yMod >= 0 && yMod <= 60 ) || (yDiv == 3 && yMod == 0)){
+				  rightIndex = 2;
+			  }
+			  if((yDiv == 3 && yMod >= 0 && yMod <= 60 ) || (yDiv == 4 && yMod == 0)){
+				  rightIndex = 3;
+			  }
+			  if((yDiv == 4 && yMod >= 0 && yMod <= 60 ) || (yDiv == 5 && yMod == 0)){
+				  rightIndex = 4;
+			  }
+			  log("rightIndex "+ rightIndex);
+		 }
+	  }
+     
     } else {
       log("can't figure out which touch to continue");
     }
