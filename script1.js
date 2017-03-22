@@ -109,40 +109,41 @@ function handleMove(evt) {
 		  // log("leftIndex "+ leftIndex);
 		  
 		  if (ongoingTouches[idx].pageX > 20){
-			  if(ongoingTouches[idx].pageY >= 0 && ongoingTouches[idx].pageY <= 60){
+			  if(touches[i].pageY >= 0 && touches[i].pageY <= 60){
 				  leftIndex = 0;
 			  }
-			  if(ongoingTouches[idx].pageY > 60 && ongoingTouches[idx].pageY <= 120){
+			  if(touches[i].pageY > 60 && touches[i].pageY <= 120){
 				  leftIndex = 1;
 			  }
-			  if(ongoingTouches[idx].pageY > 120 && ongoingTouches[idx].pageY <= 180){
+			  if(touches[i].pageY > 120 && touches[i].pageY <= 180){
 				  leftIndex = 2;
 			  }
-			  if(ongoingTouches[idx].pageY > 180 && ongoingTouches[idx].pageY <= 240){
+			  if(touches[i].pageY > 180 && touches[i].pageY <= 240){
 				  leftIndex = 3;
 			  }
-			  if(ongoingTouches[idx].pageY > 240 && ongoingTouches[idx].pageY <= 300){
+			  if(touches[i].pageY > 240 && touches[i].pageY <= 300){
 				  leftIndex = 4;
 			  }
+			   log("leftIndex "+ rightIndex);
 		  }
 	  }
 	  if (rightIndex == null){
 		  if ((ongoingTouches[idx].pageX > 150)){
 			  var yDiv = touches[i].pageY /60;
 			  var yMod = touches[i].pageY %60;
-			  if((yDiv == 0 && yMod >= 0 && yMod <= 60 ) || (yDiv == 1 && yMod == 0)){
+			  if(touches[i].pageY >= 0 && touches[i].pageY <= 60){
 				  rightIndex = 0;
 			  }
-			  if((yDiv == 1 && yMod >= 0 && yMod <= 60 ) || (yDiv == 2 && yMod == 0)){
+			  if(touches[i].pageY > 60 && touches[i].pageY <= 120){
 				  rightIndex = 1;
 			  }
-			  if((yDiv == 2 && yMod >= 0 && yMod <= 60 ) || (yDiv == 3 && yMod == 0)){
+			  if(touches[i].pageY > 120 && touches[i].pageY <= 180){
 				  rightIndex = 2;
 			  }
-			  if((yDiv == 3 && yMod >= 0 && yMod <= 60 ) || (yDiv == 4 && yMod == 0)){
+			  if(touches[i].pageY > 180 && touches[i].pageY <= 240){
 				  rightIndex = 3;
 			  }
-			  if((yDiv == 4 && yMod >= 0 && yMod <= 60 ) || (yDiv == 5 && yMod == 0)){
+			  if(touches[i].pageY > 240 && touches[i].pageY <= 300){
 				  rightIndex = 4;
 			  }
 			  log("rightIndex "+ rightIndex);
