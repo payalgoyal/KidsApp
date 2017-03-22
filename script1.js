@@ -150,16 +150,19 @@ function handleMove(evt) {
 			  log("rightIndex "+ rightIndex);
 		 }
 	  }
-	  if (rightIndex == list[0].rightAns[leftIndex]){
-		  log("Correct Match for "+list[0].leftColumn[leftIndex]);
-	  }
-	  else{
-	
-	  }
      
     } else {
       log("can't figure out which touch to continue");
     }
+  }
+  if (rightIndex == list[0].rightAns[leftIndex]){
+	  log("Correct Match for "+list[0].leftColumn[leftIndex]);
+	  leftIndex = null;
+	  rightIndex = null;
+  }
+  else{
+	  leftIndex = null;
+	  rightIndex = null;
   }
 }
 
