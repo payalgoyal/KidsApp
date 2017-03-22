@@ -7,7 +7,7 @@ function matchTheColumn(){
 	rightValues.push("Apple","Ball","Cat","Doll","Elephant");
 	list.push({leftColumn: ["A","B","C","D","E"],
 		rightColumn: [3,2,5,1,4],
-		rightAns: 1});
+		rightAns:[4,2,1,5,3]});
 	fillValues();
 }
 
@@ -44,20 +44,20 @@ var ongoingTouches = [];
 
 function handleStart(evt) {
   evt.preventDefault();
-  log("touchstart.");
+  // log("touchstart.");
   var el = document.getElementsByTagName("canvas")[0];
   var ctx = el.getContext("2d");
   var touches = evt.changedTouches;
         
   for (var i = 0; i < touches.length; i++) {
-    log("touchstart:" + i + "...");
+    // log("touchstart:" + i + "...");
     ongoingTouches.push(copyTouch(touches[i]));
 	var color = colorForTouch(touches[i]);
     ctx.beginPath();
     ctx.arc(touches[i].pageX, touches[i].pageY, 4, 0, 2 * Math.PI, false);  // a circle at the start
     ctx.fillStyle = color;
     ctx.fill();
-    log("touchstart:" + i + ".");
+    // log("touchstart:" + i + ".");
   }
 }
 
@@ -72,14 +72,14 @@ function handleMove(evt) {
     var idx = ongoingTouchIndexById(touches[i].identifier);
 
     if (idx >= 0) {
-      log("continuing touch "+idx);
+      // log("continuing touch "+idx);
 	  
 		var query = document.getElementById("questionAlpha").children[leftIndex];
 	  if (ongoingTouches[idx].pageX > 40 && ongoingTouches[idx].pageX < 301){
 		  ctx.beginPath();
-		   log("ctx.moveTo(" + ongoingTouches[idx].pageX + ", " + ongoingTouches[idx].pageY + ");");
+		   // log("ctx.moveTo(" + ongoingTouches[idx].pageX + ", " + ongoingTouches[idx].pageY + ");");
 		  ctx.moveTo(ongoingTouches[idx].pageX, ongoingTouches[idx].pageY);
-		  log("ctx.lineTo(" + touches[i].pageX + ", " + touches[i].pageY + ");");
+		  // log("ctx.lineTo(" + touches[i].pageX + ", " + touches[i].pageY + ");");
 		  ctx.lineTo(touches[i].pageX, touches[i].pageY);
 		  ctx.lineWidth = 4;
 		  ctx.strokeStyle = color;
@@ -148,6 +148,9 @@ function handleMove(evt) {
 			  }
 			  log("rightIndex "+ rightIndex);
 		 }
+	  }
+	  if (rightIndex == list[0].rightAns[leftIndex]){
+		  log("Correct Match");
 	  }
      
     } else {
