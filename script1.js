@@ -181,7 +181,8 @@ function handleEnd(evt) {
   var el = document.getElementsByTagName("canvas")[0];
   var ctx = el.getContext("2d");
   var touches = evt.changedTouches;
-  
+  leftIndex = null;
+  rightIndex = null;
   end = 1;
 
   for (var i = 0; i < touches.length; i++) {
