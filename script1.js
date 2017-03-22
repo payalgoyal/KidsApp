@@ -157,12 +157,12 @@ function handleMove(evt) {
   }
   if (rightIndex == list[0].rightAns[leftIndex]){
 	  log("Correct Match for "+list[0].leftColumn[leftIndex]);
-	  leftIndex = null;
-	  rightIndex = null;
+	  // leftIndex = null;
+	  // rightIndex = null;
   }
   else{
-	  leftIndex = null;
-	  rightIndex = null;
+	  // leftIndex = null;
+	  // rightIndex = null;
   }
 }
 
