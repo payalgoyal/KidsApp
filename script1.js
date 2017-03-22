@@ -2,6 +2,8 @@ var leftIndex = null;
 var rightIndex = null;
 var list = [];
 var rightValues = [];
+var end = 0;
+
 function matchTheColumn(){
 	
 	rightValues.push("Apple","Ball","Cat","Doll","Elephant");
@@ -49,7 +51,7 @@ function handleStart(evt) {
   var el = document.getElementsByTagName("canvas")[0];
   var ctx = el.getContext("2d");
   var touches = evt.changedTouches;
-        
+  end = 0;
   for (var i = 0; i < touches.length; i++) {
     // log("touchstart:" + i + "...");
     ongoingTouches.push(copyTouch(touches[i]));
@@ -110,44 +112,48 @@ function handleMove(evt) {
 		  // log("leftIndex "+ leftIndex);
 		  
 		  if (ongoingTouches[idx].pageX > 20){
-			  if(touches[i].pageY >= 0 && touches[i].pageY <= 60){
-				  leftIndex = 0;
+			  if (end == 0){
+				  if(touches[i].pageY >= 0 && touches[i].pageY <= 60){
+					  leftIndex = 0;
+				  }
+				  if(touches[i].pageY > 60 && touches[i].pageY <= 120){
+					  leftIndex = 1;
+				  }
+				  if(touches[i].pageY > 120 && touches[i].pageY <= 180){
+					  leftIndex = 2;
+				  }
+				  if(touches[i].pageY > 180 && touches[i].pageY <= 240){
+					  leftIndex = 3;
+				  }
+				  if(touches[i].pageY > 240 && touches[i].pageY <= 300){
+					  leftIndex = 4;
+				  }
+				  log("leftIndex "+ leftIndex);
 			  }
-			  if(touches[i].pageY > 60 && touches[i].pageY <= 120){
-				  leftIndex = 1;
-			  }
-			  if(touches[i].pageY > 120 && touches[i].pageY <= 180){
-				  leftIndex = 2;
-			  }
-			  if(touches[i].pageY > 180 && touches[i].pageY <= 240){
-				  leftIndex = 3;
-			  }
-			  if(touches[i].pageY > 240 && touches[i].pageY <= 300){
-				  leftIndex = 4;
-			  }
-			   log("leftIndex "+ leftIndex);
 		  }
 	  }
 	  if (rightIndex == null){
 		  if ((ongoingTouches[idx].pageX > 150)){
-			  var yDiv = touches[i].pageY /60;
-			  var yMod = touches[i].pageY %60;
-			  if(touches[i].pageY >= 0 && touches[i].pageY <= 60){
-				  rightIndex = 0;
-			  }
-			  if(touches[i].pageY > 60 && touches[i].pageY <= 120){
-				  rightIndex = 1;
-			  }
-			  if(touches[i].pageY > 120 && touches[i].pageY <= 180){
-				  rightIndex = 2;
-			  }
-			  if(touches[i].pageY > 180 && touches[i].pageY <= 240){
-				  rightIndex = 3;
-			  }
-			  if(touches[i].pageY > 240 && touches[i].pageY <= 300){
-				  rightIndex = 4;
-			  }
-			  log("rightIndex "+ rightIndex);
+			  if (end == 0){
+				  var yDiv = touches[i].pageY /60;
+				  var yMod = touches[i].pageY %60;
+				  if(touches[i].pageY >= 0 && touches[i].pageY <= 60){
+					  rightIndex = 0;
+				  }
+				  if(touches[i].pageY > 60 && touches[i].pageY <= 120){
+					  rightIndex = 1;
+				  }
+				  if(touches[i].pageY > 120 && touches[i].pageY <= 180){
+					  rightIndex = 2;
+				  }
+				  if(touches[i].pageY > 180 && touches[i].pageY <= 240){
+					  rightIndex = 3;
+				  }
+				  if(touches[i].pageY > 240 && touches[i].pageY <= 300){
+					  rightIndex = 4;
+				  }
+				  log("rightIndex "+ rightIndex);
+			 }
 		 }
 	  }
      
@@ -172,6 +178,8 @@ function handleEnd(evt) {
   var el = document.getElementsByTagName("canvas")[0];
   var ctx = el.getContext("2d");
   var touches = evt.changedTouches;
+  
+  end = 1;
 
   for (var i = 0; i < touches.length; i++) {
     var color = colorForTouch(touches[i]);
