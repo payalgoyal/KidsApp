@@ -124,7 +124,7 @@ function handleMove(evt) {
 			  if(touches[i].pageY > 240 && touches[i].pageY <= 300){
 				  leftIndex = 4;
 			  }
-			   log("leftIndex "+ rightIndex);
+			   log("leftIndex "+ leftIndex);
 		  }
 	  }
 	  if (rightIndex == null){
