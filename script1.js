@@ -108,7 +108,7 @@ function handleMove(evt) {
 		  // }
 		  // log("leftIndex "+ leftIndex);
 		  
-		  if (ongoingTouches[idx].pageX > 0){
+		  if (ongoingTouches[idx].pageX > 20){
 			  if(ongoingTouches[idx].pageY >= 0 && ongoingTouches[idx].pageY <= 60){
 				  leftIndex = 0;
 			  }
