@@ -4,6 +4,7 @@ var list = [];
 var rightValues = [];
 var end = 0;
 var el;
+var correct = 0;
 
 function matchTheColumn(){
 	
@@ -147,7 +148,7 @@ function handleMove(evt) {
       log("can't figure out which touch to continue");
     }
   }
-  if ((rightIndex+1) == list[0].rightAns[leftIndex]){
+  if (rightIndex != null && ((rightIndex+1) == list[0].rightAns[leftIndex])){
 	  log("Correct Match for "+list[0].leftColumn[leftIndex]);
 	  list[0].traversed[leftIndex] = true;
 	  log(list[0].leftColumn[leftIndex] + list[0].traversed[leftIndex]);
@@ -170,7 +171,6 @@ function handleEnd(evt) {
   var el = document.getElementsByTagName("canvas")[0];
   var ctx = el.getContext("2d");
   var touches = evt.changedTouches;
-   list[0].traversed[leftIndex] = true;
    
     var query = document.getElementById("questionAlpha").children[leftIndex];
 	 var ans = document.getElementById("answerImage").children[rightIndex];
@@ -187,6 +187,7 @@ function handleEnd(evt) {
   leftIndex = null;
   rightIndex = null;
   end = 1;
+  list[0].traversed[leftIndex] = true;
 
   for (var i = 0; i < touches.length; i++) {
     var color = colorForTouch(touches[i]);
