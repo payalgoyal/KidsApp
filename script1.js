@@ -100,6 +100,7 @@ function handleMove(evt) {
 			log(touches[i].pageX + " " + touches[i].pageY);
 			log(path[0].leftCo + " " + path[0].rightCo);
 		  ongoingTouches.splice(idx, 1, copyTouch(touches[i]));  // swap in the new touch record
+		  log("idx "+idx);
 		  // log(".");
 	  }
 	  if (leftIndex == null){
@@ -212,7 +213,7 @@ function handleEnd(evt) {
   end = 1;
 
   log("at end location");
-  log("path Length "+ path[0].leftCo.length.length);
+  log("path Length "+ path[0].leftCo.length);
   for (ind=0;ind<path[0].leftCo.length;ind++){
 	log(path[0].leftCo[ind] + " " + path[0].rightCo[ind]);
   }
