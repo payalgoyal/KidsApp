@@ -172,6 +172,10 @@ function handleMove(evt) {
       log("can't figure out which touch to continue");
     }
   }
+  log("at display location");
+  for (ind=0;ind<path[0].leftCo.length;ind++){
+	log(path[0].leftCo + " " + path[0].rightCo);
+  }
   if ((rightIndex+1) == list[0].rightAns[leftIndex]){
 	  log("Correct Match for "+list[0].leftColumn[leftIndex]);
 	  list[0].traversed[leftIndex] = true;
