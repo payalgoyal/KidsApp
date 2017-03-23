@@ -2,7 +2,6 @@ var leftIndex = null;
 var rightIndex = null;
 var list = [];
 var rightValues = [];
-var path = [];
 var end = 0;
 
 function matchTheColumn(){
@@ -60,12 +59,11 @@ function handleStart(evt) {
     // log("touchstart:" + i + "...");
     ongoingTouches.push(copyTouch(touches[i]));
 	var color = colorForTouch(touches[i]);
-	path.push({leftCo: [touches[i].pageX],
-		rightCo: [touches[i].pageY]});
-    // ctx.beginPath();
-    // ctx.arc(touches[i].pageX, touches[i].pageY, 4, 0, 2 * Math.PI, false);  // a circle at the start
-    // ctx.fillStyle = color;
-    // ctx.fill();
+    ctx.beginPath();
+    ctx.arc(touches[i].pageX, touches[i].pageY, 4, 0, 2 * Math.PI, false);  // a circle at the start
+    ctx.fillStyle = color;
+    ctx.fill();
+	log(touches[i].pageX + " " + touches[i].pageY);
     // log("touchstart:" + i + ".");
   }
 }
@@ -85,17 +83,15 @@ function handleMove(evt) {
 	  
 		var query = document.getElementById("questionAlpha").children[leftIndex];
 	  if (ongoingTouches[idx].pageX > 40 && ongoingTouches[idx].pageX < 301){
-		  path.push({leftCo: [touches[i].pageX],
-					rightCo: [touches[i].pageY]});
-		  // ctx.beginPath();
-		   // // log("ctx.moveTo(" + ongoingTouches[idx].pageX + ", " + ongoingTouches[idx].pageY + ");");
-		  // ctx.moveTo(ongoingTouches[idx].pageX, ongoingTouches[idx].pageY);
-		  // // log("ctx.lineTo(" + touches[i].pageX + ", " + touches[i].pageY + ");");
-		  // ctx.lineTo(touches[i].pageX, touches[i].pageY);
-		  // ctx.lineWidth = 4;
-		  // ctx.strokeStyle = color;
-		  // ctx.stroke();
-
+		  ctx.beginPath();
+		   // log("ctx.moveTo(" + ongoingTouches[idx].pageX + ", " + ongoingTouches[idx].pageY + ");");
+		  ctx.moveTo(ongoingTouches[idx].pageX, ongoingTouches[idx].pageY);
+		  // log("ctx.lineTo(" + touches[i].pageX + ", " + touches[i].pageY + ");");
+		  ctx.lineTo(touches[i].pageX, touches[i].pageY);
+		  ctx.lineWidth = 4;
+		  ctx.strokeStyle = color;
+		  ctx.stroke();
+		  log(touches[i].pageX + " " + touches[i].pageY);
 		  ongoingTouches.splice(idx, 1, copyTouch(touches[i]));  // swap in the new touch record
 		  // log(".");
 	  }
@@ -169,21 +165,6 @@ function handleMove(evt) {
       log("can't figure out which touch to continue");
     }
   }
-  
-  if (idx>=0){
-	  for (var ind=0;ind<path[0].leftCo.length;ind++){
-		  ctx.beginPath();
-			   // // log("ctx.moveTo(" + ongoingTouches[idx].pageX + ", " + ongoingTouches[idx].pageY + ");");
-		  ctx.moveTo(ongoingTouches[idx].pageX, ongoingTouches[idx].pageY);
-			  // // log("ctx.lineTo(" + touches[i].pageX + ", " + touches[i].pageY + ");");
-		  ctx.lineTo(path[0].leftCo[ind], path[0].rightCo[ind]);
-		  ctx.lineWidth = 4;
-		  ctx.strokeStyle = color;
-		  ctx.stroke();
-	  }
-  }
-  
-  
   if ((rightIndex+1) == list[0].rightAns[leftIndex]){
 	  log("Correct Match for "+list[0].leftColumn[leftIndex]);
 	  list[0].traversed[leftIndex] = true;
