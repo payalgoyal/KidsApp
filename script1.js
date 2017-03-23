@@ -90,6 +90,9 @@ function handleMove(evt) {
 	  
 		var query = document.getElementById("questionAlpha").children[leftIndex];
 	  if (ongoingTouches[idx].pageX > 40 && ongoingTouches[idx].pageX < 301){
+		  log("beforeMove");
+		  log("ongoing "+ongoingTouches[idx].pageX+" "+ongoingTouches[idx].pageY)
+		  log("touches "+touches[i].pageX+" "+ touches[i].pageY)
 		  ctx.beginPath();
 		   // log("ctx.moveTo(" + ongoingTouches[idx].pageX + ", " + ongoingTouches[idx].pageY + ");");
 		  ctx.moveTo(ongoingTouches[idx].pageX, ongoingTouches[idx].pageY);
