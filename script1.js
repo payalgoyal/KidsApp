@@ -95,8 +95,8 @@ function handleMove(evt) {
 		  ctx.lineWidth = 4;
 		  ctx.strokeStyle = color;
 		  ctx.stroke();
-		  path.push({leftCo: [touches[i].pageX],
-				rightCo: [touches[i].pageY]});
+		  path[0].leftCo.push(touches[i].pageX);
+			path[0].rightCo.push(touches[i].pageY);
 			log(touches[i].pageX + " " + touches[i].pageY);
 			log(path[0].leftCo + " " + path[0].rightCo);
 		  ongoingTouches.splice(idx, 1, copyTouch(touches[i]));  // swap in the new touch record
