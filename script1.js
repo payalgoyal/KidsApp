@@ -103,9 +103,9 @@ function handleMove(evt) {
 			log(touches[i].pageX + " " + touches[i].pageY);
 			log(path[0].leftCo + " " + path[0].rightCo);
 		  ongoingTouches.splice(idx, 1, copyTouch(touches[i]));  // swap in the new touch record
-		  onGoingPath.leftCo.push(ongoingTouches[0].pageX);
-		  onGoingPath.rightCo.push(ongoingTouches[0].pageY);
-		  log("onGoingPath "+onGoingPath);
+		  onGoingPath[0].leftCo.push(ongoingTouches[0].pageX);
+		  onGoingPath[0].rightCo.push(ongoingTouches[0].pageY);
+		  log("onGoingPath "+onGoingPath[0]);
 		  // log(".");
 	  }
 	  if (leftIndex == null){
@@ -180,9 +180,9 @@ function handleMove(evt) {
   }
   log("at display location");
   
-  log("onGoingPath Length "+ onGoingPath.leftCo.length);
-  for (iOn=0;iOn<onGoingPath.leftCo.length;iOn++){
-	  log ("onGoing "+onGoingPath.leftCo[iOn].pageX + " " + onGoingPath.rightCo[iOn].pageY)
+  log("onGoingPath Length "+ onGoingPath[0].leftCo.length);
+  for (iOn=0;iOn<onGoingPath[0].leftCo.length;iOn++){
+	  log ("onGoing "+onGoingPath[0].leftCo[iOn].pageX + " " + onGoingPath[0].rightCo[iOn].pageY)
   }
   log("path Length "+ path[0].leftCo.length);
   for (ind=0;ind<path[0].leftCo.length;ind++){
