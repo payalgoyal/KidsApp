@@ -59,10 +59,12 @@ function handleStart(evt) {
     // log("touchstart:" + i + "...");
     ongoingTouches.push(copyTouch(touches[i]));
 	var color = colorForTouch(touches[i]);
-    ctx.beginPath();
-    ctx.arc(touches[i].pageX, touches[i].pageY, 4, 0, 2 * Math.PI, false);  // a circle at the start
-    ctx.fillStyle = color;
-    ctx.fill();
+	if (leftIndex != null && list[0].traversed[leftIndex] == false){
+		ctx.beginPath();
+		ctx.arc(touches[i].pageX, touches[i].pageY, 4, 0, 2 * Math.PI, false);  // a circle at the start
+		ctx.fillStyle = color;
+		ctx.fill();
+	}
     // log("touchstart:" + i + ".");
   }
 }
@@ -149,11 +151,13 @@ function handleMove(evt) {
 	  log("Correct Match for "+list[0].leftColumn[leftIndex]);
 	  list[0].traversed[leftIndex] = true;
 	  log(list[0].leftColumn[leftIndex] + list[0].traversed[leftIndex]);
+	  correct = 1;
 	  imageData = context.getImageData(0,0,canvas.width,canvas.height);
 	  // leftIndex = null;
 	  // rightIndex = null;
   }
   else{
+	  correct = 0;
 	  imageData = context.putImageData(0,0,canvas.width,canvas.height);
 	  // leftIndex = null;
 	  // rightIndex = null;
@@ -167,6 +171,18 @@ function handleEnd(evt) {
   var ctx = el.getContext("2d");
   var touches = evt.changedTouches;
    list[0].traversed[leftIndex] = true;
+   
+    var query = document.getElementById("questionAlpha").children[leftIndex];
+	 var ans = document.getElementById("answerImage").children[rightIndex];
+	if(correct == 1){
+		query.setAttribute("style","color:green");
+		ans.setAttribute("style","color:green");
+	}
+	else{
+		query.setAttribute("style","color:red");
+		ans.setAttribute("style","color:red");
+	}
+   
   leftIndex = null;
   rightIndex = null;
   end = 1;
