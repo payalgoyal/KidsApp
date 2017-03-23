@@ -171,7 +171,7 @@ function handleMove(evt) {
   }
   
   if (idx>=0){
-	  for (var ind=0;ind<path[0].leftCo.length){
+	  for (var ind=0;ind<path[0].leftCo.length;ind++){
 		  ctx.beginPath();
 			   // // log("ctx.moveTo(" + ongoingTouches[idx].pageX + ", " + ongoingTouches[idx].pageY + ");");
 		  ctx.moveTo(ongoingTouches[idx].pageX, ongoingTouches[idx].pageY);
