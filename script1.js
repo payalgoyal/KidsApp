@@ -173,9 +173,19 @@ function handleMove(evt) {
     }
   }
   log("at display location");
+  log("touches Length "+ touches.length);
+  for (inde=0;inde<touches.length;inde++){
+	log("touches " + touches[inde].pageX + " " + touches[inde].pageY);
+  }
+  log("onGoing Length "+ ongoingTouches.length);
+  for (iOn=0;iOn<ongoingTouches.length;iOn++){
+	  log ("onGoing "+ongoingTouches[idx].pageX + " " + ongoingTouches[idx].pageY)
+  }
+  log("path Length "+ path.length);
   for (ind=0;ind<path[0].leftCo.length;ind++){
 	log(path[0].leftCo + " " + path[0].rightCo);
   }
+  
   if ((rightIndex+1) == list[0].rightAns[leftIndex]){
 	  log("Correct Match for "+list[0].leftColumn[leftIndex]);
 	  list[0].traversed[leftIndex] = true;
