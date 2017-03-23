@@ -174,12 +174,12 @@ function handleEnd(evt) {
     var query = document.getElementById("questionAlpha").children[leftIndex];
 	 var ans = document.getElementById("answerImage").children[rightIndex];
 	if(correct == 1){
-		query.setAttribute("style","color:green");
-		ans.setAttribute("style","color:green");
+		query.setAttribute("style","color:green;font-size:50; width:50px;height:60");
+		ans.setAttribute("style","color:green;font-size:50; width:250px;height:60");
 	}
 	else{
-		query.setAttribute("style","color:red");
-		ans.setAttribute("style","color:red");
+		query.setAttribute("style","color:red;font-size:50; width:50px;height:60");
+		ans.setAttribute("style","color:red;font-size:50; width:250px;height:60");
 	}
    
   leftIndex = null;
