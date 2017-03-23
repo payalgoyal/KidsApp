@@ -202,6 +202,9 @@ function handleEnd(evt) {
   end = 1;
 
   log("at end location");
+  for (inde=0;inde<touches.length;inde++){
+	log(touches[inde].pageX + " " + touches[inde].pageY);
+  }
   for (ind=0;ind<path[0].leftCo.length;ind++){
 	log(path[0].leftCo + " " + path[0].rightCo);
   }
