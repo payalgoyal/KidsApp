@@ -2,6 +2,7 @@ var leftIndex = null;
 var rightIndex = null;
 var list = [];
 var rightValues = [];
+var path = [];
 var end = 0;
 
 function matchTheColumn(){
@@ -63,7 +64,10 @@ function handleStart(evt) {
     ctx.arc(touches[i].pageX, touches[i].pageY, 4, 0, 2 * Math.PI, false);  // a circle at the start
     ctx.fillStyle = color;
     ctx.fill();
+	path.push({leftCo: [touches[i].pageX],
+		rightCo: [touches[i].pageY]});
 	log(touches[i].pageX + " " + touches[i].pageY);
+	log(path[0].leftCo + " " + path[0].rightCo);
     // log("touchstart:" + i + ".");
   }
 }
@@ -91,7 +95,10 @@ function handleMove(evt) {
 		  ctx.lineWidth = 4;
 		  ctx.strokeStyle = color;
 		  ctx.stroke();
-		  log(touches[i].pageX + " " + touches[i].pageY);
+		  path.push({leftCo: [touches[i].pageX],
+				rightCo: [touches[i].pageY]});
+			log(touches[i].pageX + " " + touches[i].pageY);
+			log(path[0].leftCo + " " + path[0].rightCo);
 		  ongoingTouches.splice(idx, 1, copyTouch(touches[i]));  // swap in the new touch record
 		  // log(".");
 	  }
