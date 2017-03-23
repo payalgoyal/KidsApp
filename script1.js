@@ -80,7 +80,7 @@ function handleMove(evt) {
     if (idx >= 0) {
       // log("continuing touch "+idx);
 	  if (leftIndex == null){
-		  if (ongoingTouches[idx].pageX > 20){
+		  if (ongoingTouches[idx].pageX > 20 && ongoingTouches[idx].pageX < 70){
 			  if (end == 0){
 				  if(touches[i].pageY >= 0 && touches[i].pageY <= 60){
 					  leftIndex = 0;
@@ -166,6 +166,7 @@ function handleEnd(evt) {
   var el = document.getElementsByTagName("canvas")[0];
   var ctx = el.getContext("2d");
   var touches = evt.changedTouches;
+   list[0].traversed[leftIndex] = true;
   leftIndex = null;
   rightIndex = null;
   end = 1;
