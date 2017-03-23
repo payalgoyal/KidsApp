@@ -201,6 +201,11 @@ function handleEnd(evt) {
   rightIndex = null;
   end = 1;
 
+  log("at end location");
+  for (ind=0;ind<path[0].leftCo.length;ind++){
+	log(path[0].leftCo + " " + path[0].rightCo);
+  }
+  
   for (var i = 0; i < touches.length; i++) {
     var color = colorForTouch(touches[i]);
     var idx = ongoingTouchIndexById(touches[i].identifier);
