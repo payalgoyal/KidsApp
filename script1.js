@@ -183,7 +183,7 @@ function handleMove(evt) {
   }
   log("path Length "+ path[0].leftCo.length);
   for (ind=0;ind<path[0].leftCo.length;ind++){
-	log(path[0].leftCo + " " + path[0].rightCo);
+	log(path[0].leftCo[ind] + " " + path[0].rightCo[ind]);
   }
   
   if ((rightIndex+1) == list[0].rightAns[leftIndex]){
@@ -212,17 +212,9 @@ function handleEnd(evt) {
   end = 1;
 
   log("at end location");
-  log("touches Length "+ touches.length);
-  for (inde=0;inde<touches.length;inde++){
-	log("touches " + touches[inde].pageX + " " + touches[inde].pageY);
-  }
-  log("onGoing Length "+ ongoingTouches.length);
-  for (iOn=0;iOn<ongoingTouches.length;iOn++){
-	  log ("onGoing "+ongoingTouches[idx].pageX + " " + ongoingTouches[idx].pageY)
-  }
-  log("path Length "+ path.length);
+  log("path Length "+ path[0].leftCo.length.length);
   for (ind=0;ind<path[0].leftCo.length;ind++){
-	log(path[0].leftCo + " " + path[0].rightCo);
+	log(path[0].leftCo[ind] + " " + path[0].rightCo[ind]);
   }
   
   for (var i = 0; i < touches.length; i++) {
