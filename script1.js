@@ -59,7 +59,7 @@ function handleStart(evt) {
     // log("touchstart:" + i + "...");
     ongoingTouches.push(copyTouch(touches[i]));
 	var color = colorForTouch(touches[i]);
-	if (leftIndex != null && list[0].traversed[leftIndex] == false){
+	if (leftIndex != null){
 		ctx.beginPath();
 		ctx.arc(touches[i].pageX, touches[i].pageY, 4, 0, 2 * Math.PI, false);  // a circle at the start
 		ctx.fillStyle = color;
