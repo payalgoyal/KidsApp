@@ -3,6 +3,7 @@ var rightIndex = null;
 var list = [];
 var rightValues = [];
 var end = 0;
+var el;
 
 function matchTheColumn(){
 	
@@ -36,7 +37,7 @@ function fillValues(){
 	}
 }
 function startup() {
-  var el = document.getElementsByTagName("canvas")[0];
+  el = document.getElementsByTagName("canvas")[0];
   el.addEventListener("touchstart", handleStart, false);
   el.addEventListener("touchend", handleEnd, false);
   el.addEventListener("touchcancel", handleCancel, false);
@@ -103,7 +104,7 @@ function handleMove(evt) {
 		  }
 	  }
 	  if (rightIndex == null){
-		  if ((ongoingTouches[idx].pageX > 200)){
+		  if ((ongoingTouches[idx].pageX > 250)){
 			  if (end == 0){
 				  var yDiv = touches[i].pageY /60;
 				  var yMod = touches[i].pageY %60;
@@ -151,13 +152,13 @@ function handleMove(evt) {
 	  list[0].traversed[leftIndex] = true;
 	  log(list[0].leftColumn[leftIndex] + list[0].traversed[leftIndex]);
 	  correct = 1;
-	  imageData = context.getImageData(0,0,canvas.width,canvas.height);
+	  imageData = context.getImageData(0,0,el.width,el.height);
 	  // leftIndex = null;
 	  // rightIndex = null;
   }
   else{
 	  correct = 0;
-	  imageData = context.putImageData(0,0,canvas.width,canvas.height);
+	  imageData = context.putImageData(0,0,el.width,el.height);
 	  // leftIndex = null;
 	  // rightIndex = null;
   }
@@ -182,6 +183,7 @@ function handleEnd(evt) {
 		ans.setAttribute("style","color:red;font-size:50; width:250px;height:60");
 	}
    
+   correct = 0;
   leftIndex = null;
   rightIndex = null;
   end = 1;
