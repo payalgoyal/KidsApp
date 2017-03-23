@@ -3,6 +3,7 @@ var rightIndex = null;
 var list = [];
 var rightValues = [];
 var path = [];
+var onGoingPath = [];
 var end = 0;
 
 function matchTheColumn(){
@@ -64,6 +65,8 @@ function handleStart(evt) {
     ctx.arc(touches[i].pageX, touches[i].pageY, 4, 0, 2 * Math.PI, false);  // a circle at the start
     ctx.fillStyle = color;
     ctx.fill();
+	onGoingPath.push({leftCo: [ongoingTouches[i].pageX],
+		rightCo: [ongoingTouches[i].pageY]});
 	path.push({leftCo: [touches[i].pageX],
 		rightCo: [touches[i].pageY]});
 	log(touches[i].pageX + " " + touches[i].pageY);
@@ -100,7 +103,9 @@ function handleMove(evt) {
 			log(touches[i].pageX + " " + touches[i].pageY);
 			log(path[0].leftCo + " " + path[0].rightCo);
 		  ongoingTouches.splice(idx, 1, copyTouch(touches[i]));  // swap in the new touch record
-		  log("idx "+idx);
+		  onGoingPath.leftCo.push(ongoingTouches[0].pageX);
+		  onGoingPath.rightCo.push(ongoingTouches[0].pageY);
+		  log("onGoingPath "+onGoingPath);
 		  // log(".");
 	  }
 	  if (leftIndex == null){
@@ -174,13 +179,10 @@ function handleMove(evt) {
     }
   }
   log("at display location");
-  log("touches Length "+ touches.length);
-  for (inde=0;inde<touches.length;inde++){
-	log("touches " + touches[inde].pageX + " " + touches[inde].pageY);
-  }
-  log("onGoing Length "+ ongoingTouches.length);
-  for (iOn=0;iOn<ongoingTouches.length;iOn++){
-	  log ("onGoing "+ongoingTouches[idx].pageX + " " + ongoingTouches[idx].pageY)
+  
+  log("onGoingPath Length "+ onGoingPath.leftCo.length);
+  for (iOn=0;iOn<onGoingPath.leftCo.length;iOn++){
+	  log ("onGoing "+onGoingPath.leftCo[iOn].pageX + " " + onGoingPath.rightCo[iOn].pageY)
   }
   log("path Length "+ path[0].leftCo.length);
   for (ind=0;ind<path[0].leftCo.length;ind++){
@@ -213,6 +215,10 @@ function handleEnd(evt) {
   end = 1;
 
   log("at end location");
+  log("onGoingPath Length "+ onGoingPath.leftCo.length);
+  for (iOn=0;iOn<onGoingPath.leftCo.length;iOn++){
+	  log ("onGoing "+onGoingPath.leftCo[iOn].pageX + " " + onGoingPath.rightCo[iOn].pageY)
+  }
   log("path Length "+ path[0].leftCo.length);
   for (ind=0;ind<path[0].leftCo.length;ind++){
 	log(path[0].leftCo[ind] + " " + path[0].rightCo[ind]);
