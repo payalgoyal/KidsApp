@@ -2,8 +2,6 @@ var leftIndex = null;
 var rightIndex = null;
 var list = [];
 var rightValues = [];
-var path = [];
-var onGoingPath = [];
 var end = 0;
 
 function matchTheColumn(){
@@ -65,12 +63,6 @@ function handleStart(evt) {
     ctx.arc(touches[i].pageX, touches[i].pageY, 4, 0, 2 * Math.PI, false);  // a circle at the start
     ctx.fillStyle = color;
     ctx.fill();
-	onGoingPath.push({leftCo: [ongoingTouches[i].pageX],
-		rightCo: [ongoingTouches[i].pageY]});
-	path.push({leftCo: [touches[i].pageX],
-		rightCo: [touches[i].pageY]});
-	log(touches[i].pageX + " " + touches[i].pageY);
-	log(path[0].leftCo + " " + path[0].rightCo);
     // log("touchstart:" + i + ".");
   }
 }
@@ -87,49 +79,7 @@ function handleMove(evt) {
 
     if (idx >= 0) {
       // log("continuing touch "+idx);
-	  
-		var query = document.getElementById("questionAlpha").children[leftIndex];
-	  if (ongoingTouches[idx].pageX > 40 && ongoingTouches[idx].pageX < 301){
-		  log("beforeMove");
-		  log("ongoing "+ongoingTouches[idx].pageX+" "+ongoingTouches[idx].pageY)
-		  log("touches "+touches[i].pageX+" "+ touches[i].pageY)
-		  ctx.beginPath();
-		   // log("ctx.moveTo(" + ongoingTouches[idx].pageX + ", " + ongoingTouches[idx].pageY + ");");
-		  ctx.moveTo(ongoingTouches[idx].pageX, ongoingTouches[idx].pageY);
-		  // log("ctx.lineTo(" + touches[i].pageX + ", " + touches[i].pageY + ");");
-		  ctx.lineTo(touches[i].pageX, touches[i].pageY);
-		  ctx.lineWidth = 4;
-		  ctx.strokeStyle = color;
-		  ctx.stroke();
-		  path[0].leftCo.push(touches[i].pageX);
-			path[0].rightCo.push(touches[i].pageY);
-			log(touches[i].pageX + " " + touches[i].pageY);
-			log(path[0].leftCo + " " + path[0].rightCo);
-		  ongoingTouches.splice(idx, 1, copyTouch(touches[i]));  // swap in the new touch record
-		  onGoingPath[0].leftCo.push(ongoingTouches[0].pageX);
-		  onGoingPath[0].rightCo.push(ongoingTouches[0].pageY);
-		  // log(".");
-	  }
 	  if (leftIndex == null){
-		   // var yDiv = touches[i].pageY /60;
-		  // var yMod = touches[i].pageY %60;
-		  // if((yDiv == 0 && yMod >= 0 && yMod <= 60 ) || (yDiv == 1 && yMod == 0)){
-			  // leftIndex = 0;
-		  // }
-		  // if((yDiv == 1 && yMod >= 0 && yMod <= 60 ) || (yDiv == 2 && yMod == 0)){
-			  // leftIndex = 1;
-		  // }
-		  // if((yDiv == 2 && yMod >= 0 && yMod <= 60 ) || (yDiv == 3 && yMod == 0)){
-			  // leftIndex = 2;
-		  // }
-		  // if((yDiv == 3 && yMod >= 0 && yMod <= 60 ) || (yDiv == 4 && yMod == 0)){
-			  // leftIndex = 3;
-		  // }
-		  // if((yDiv == 4 && yMod >= 0 && yMod <= 60 ) || (yDiv == 5 && yMod == 0)){
-			  // leftIndex = 4;
-		  // }
-		  // log("leftIndex "+ leftIndex);
-		  
 		  if (ongoingTouches[idx].pageX > 20){
 			  if (end == 0){
 				  if(touches[i].pageY >= 0 && touches[i].pageY <= 60){
@@ -175,22 +125,26 @@ function handleMove(evt) {
 			 }
 		 }
 	  }
+	  if (leftIndex != null && list[0].traversed[leftIndex] == false){
+		  if (ongoingTouches[idx].pageX > 40 && ongoingTouches[idx].pageX < 301){
+			  ctx.beginPath();
+			   // log("ctx.moveTo(" + ongoingTouches[idx].pageX + ", " + ongoingTouches[idx].pageY + ");");
+			  ctx.moveTo(ongoingTouches[idx].pageX, ongoingTouches[idx].pageY);
+			  // log("ctx.lineTo(" + touches[i].pageX + ", " + touches[i].pageY + ");");
+			  ctx.lineTo(touches[i].pageX, touches[i].pageY);
+			  ctx.lineWidth = 4;
+			  ctx.strokeStyle = color;
+			  ctx.stroke();
+
+			  ongoingTouches.splice(idx, 1, copyTouch(touches[i]));  // swap in the new touch record
+			  // log(".");
+		  }
+	  }
      
     } else {
       log("can't figure out which touch to continue");
     }
   }
-  log("at display location");
-  
-  log("onGoingPath Length "+ onGoingPath[0].leftCo.length);
-  for (iOn=0;iOn<onGoingPath[0].leftCo.length;iOn++){
-	  log ("onGoing "+onGoingPath[0].leftCo[iOn] + " " + onGoingPath[0].rightCo[iOn])
-  }
-  log("path Length "+ path[0].leftCo.length);
-  for (ind=0;ind<path[0].leftCo.length;ind++){
-	log(path[0].leftCo[ind] + " " + path[0].rightCo[ind]);
-  }
-  
   if ((rightIndex+1) == list[0].rightAns[leftIndex]){
 	  log("Correct Match for "+list[0].leftColumn[leftIndex]);
 	  list[0].traversed[leftIndex] = true;
@@ -216,16 +170,6 @@ function handleEnd(evt) {
   rightIndex = null;
   end = 1;
 
-  log("at end location");
-  log("onGoingPath Length "+ onGoingPath.leftCo.length);
-  for (iOn=0;iOn<onGoingPath.leftCo.length;iOn++){
-	  log ("onGoing "+onGoingPath.leftCo[iOn] + " " + onGoingPath.rightCo[iOn])
-  }
-  log("path Length "+ path[0].leftCo.length);
-  for (ind=0;ind<path[0].leftCo.length;ind++){
-	log(path[0].leftCo[ind] + " " + path[0].rightCo[ind]);
-  }
-  
   for (var i = 0; i < touches.length; i++) {
     var color = colorForTouch(touches[i]);
     var idx = ongoingTouchIndexById(touches[i].identifier);
