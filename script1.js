@@ -181,7 +181,7 @@ function handleMove(evt) {
   for (iOn=0;iOn<ongoingTouches.length;iOn++){
 	  log ("onGoing "+ongoingTouches[idx].pageX + " " + ongoingTouches[idx].pageY)
   }
-  log("path Length "+ path.length);
+  log("path Length "+ path[0].leftCo.length);
   for (ind=0;ind<path[0].leftCo.length;ind++){
 	log(path[0].leftCo + " " + path[0].rightCo);
   }
