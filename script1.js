@@ -173,16 +173,18 @@ function handleEnd(evt) {
   var ctx = el.getContext("2d");
   var touches = evt.changedTouches;
    
-    var query = document.getElementById("questionAlpha").children[leftIndex];
-	 var ans = document.getElementById("answerImage").children[rightIndex];
-	if(correct == 1){
-		query.setAttribute("style","background-color:green;font-size:50; width:50px;height:60");
-		// ans.setAttribute("style","color:green;font-size:50; width:250px;height:60");
-	}
-	else{
-		query.setAttribute("style","background-color:red;font-size:50; width:50px;height:60");
-		// ans.setAttribute("style","color:red;font-size:50; width:250px;height:60");
-	}
+   if (leftIndex != null){
+	    var query = document.getElementById("questionAlpha").children[leftIndex];
+		 // var ans = document.getElementById("answerImage").children[rightIndex];
+		if(correct == 1){
+			query.setAttribute("style","background-color:green;font-size:50; width:50px;height:60");
+			// ans.setAttribute("style","color:green;font-size:50; width:250px;height:60");
+		}
+		else{
+			query.setAttribute("style","background-color:red;font-size:50; width:50px;height:60");
+			// ans.setAttribute("style","color:red;font-size:50; width:250px;height:60");
+		}
+   }
    
    correct = 0;
   leftIndex = null;
