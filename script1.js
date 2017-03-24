@@ -72,6 +72,7 @@ function handleStart(evt) {
 }
 
 function handleMove(evt) {
+	debugger;
   evt.preventDefault();
   var el = document.getElementsByTagName("canvas")[0];
   var ctx = el.getContext("2d");
