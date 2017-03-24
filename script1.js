@@ -60,12 +60,17 @@ function handleStart(evt) {
   for (var i = 0; i < touches.length; i++) {
     // log("touchstart:" + i + "...");
     ongoingTouches.push(copyTouch(touches[i]));
-	var color = colorForTouch(touches[i]);
-		ctx.beginPath();
-		ctx.arc(touches[i].pageX, touches[i].pageY, 4, 0, 2 * Math.PI, false);  // a circle at the start
-		ctx.fillStyle = color;
-		ctx.fill();
+	var idx = ongoingTouchIndexById(touches[i].identifier);
 
+    if (idx >= 0) {
+		if (ongoingTouches[idx].pageX > -1 && ongoingTouches[idx].pageX < 80){
+			var color = colorForTouch(touches[i]);
+			ctx.beginPath();
+			ctx.arc(touches[i].pageX, touches[i].pageY, 4, 0, 2 * Math.PI, false);  // a circle at the start
+			ctx.fillStyle = color;
+			ctx.fill();
+		}
+	}
     // log("touchstart:" + i + ".");
   }
 }
@@ -84,7 +89,7 @@ function handleMove(evt) {
       // log("continuing touch "+idx);
 	  if (leftIndex == null){
 		  if (ongoingTouches[idx].pageX > -1 && ongoingTouches[idx].pageX < 80){
-			  if (end == 0){
+			  // if (end == 0){
 				  if(touches[i].pageY >= 0 && touches[i].pageY <= 60){
 					  leftIndex = 0;
 				  }
@@ -101,12 +106,12 @@ function handleMove(evt) {
 					  leftIndex = 4;
 				  }
 				  log("leftIndex "+ leftIndex);
-			  }
+			  // }
 		  }
 	  }
 	  if (rightIndex == null){
 		  if ((ongoingTouches[idx].pageX > 250)){
-			  if (end == 0){
+			  // if (end == 0){
 				  var yDiv = touches[i].pageY /60;
 				  var yMod = touches[i].pageY %60;
 				  if(touches[i].pageY >= 0 && touches[i].pageY <= 60){
@@ -125,7 +130,7 @@ function handleMove(evt) {
 					  rightIndex = 4;
 				  }
 				  log("rightIndex "+ rightIndex);
-			 }
+			 // }
 		 }
 	  }
 	  if (leftIndex != null && list[0].traversed[leftIndex] == false){
@@ -175,12 +180,12 @@ function handleEnd(evt) {
     var query = document.getElementById("questionAlpha").children[leftIndex];
 	 var ans = document.getElementById("answerImage").children[rightIndex];
 	if(correct == 1){
-		query.setAttribute("style","color:green;font-size:50; width:50px;height:60");
-		ans.setAttribute("style","color:green;font-size:50; width:250px;height:60");
+		query.setAttribute("style","background-color:green;font-size:50; width:50px;height:60");
+		// ans.setAttribute("style","color:green;font-size:50; width:250px;height:60");
 	}
 	else{
-		query.setAttribute("style","color:red;font-size:50; width:50px;height:60");
-		ans.setAttribute("style","color:red;font-size:50; width:250px;height:60");
+		query.setAttribute("style","background-color:red;font-size:50; width:50px;height:60");
+		// ans.setAttribute("style","color:red;font-size:50; width:250px;height:60");
 	}
    
    correct = 0;
