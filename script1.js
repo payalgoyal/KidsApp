@@ -5,9 +5,10 @@ var rightValues = [];
 var end = 0;
 var el;
 var correct = 0;
+var img = [];
 
 function matchTheColumn(){
-	
+	img.push({src: ["images/apple.jpg","images/ball.jpg","images/cat.jpg","images/dog.jpg","images/elephant.jpg"]})
 	rightValues.push("Apple","Ball","Cat","Doll","Elephant");
 	list.push({leftColumn: ["A","B","C","D","E"],
 		rightColumn: [3,2,5,1,4],
@@ -30,8 +31,9 @@ function fillValues(){
 	for (var i=0;i<list[0].rightColumn.length;i++){
 		var rCol = document.getElementById("answerImage");
 	
-		var aPara = document.createElement("p");
-		aPara.setAttribute("style","font-size:50; width:250px;height:60");
+		var aPara = document.createElement("img");
+		aPara.setAttribute("style","width:100px;height:60");
+		aPara.setAttribute("src",img[0].src[list[0].rightColumn[i]-1]);
 		aPara.innerHTML = rightValues[list[0].rightColumn[i]-1];
 		
 		rCol.appendChild(aPara);
@@ -130,7 +132,7 @@ function handleMove(evt) {
 		 }
 	  }
 	  if (leftIndex != null && list[0].traversed[leftIndex] == false){
-		  if (ongoingTouches[idx].pageX > -1 && ongoingTouches[idx].pageX < 255){
+		  if (ongoingTouches[idx].pageX > -1 && ongoingTouches[idx].pageX < 300){
 			  ctx.beginPath();
 			   // log("ctx.moveTo(" + ongoingTouches[idx].pageX + ", " + ongoingTouches[idx].pageY + ");");
 			  ctx.moveTo(ongoingTouches[idx].pageX, ongoingTouches[idx].pageY);
