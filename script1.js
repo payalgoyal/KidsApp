@@ -59,22 +59,16 @@ function handleStart(evt) {
   end = 0;
   leftIndex = null;
   rightIndex = null;
-  // for (var i = 0; i < touches.length; i++) {
-    // // log("touchstart:" + i + "...");
-    // ongoingTouches.push(copyTouch(touches[i]));
-	// var idx = ongoingTouchIndexById(touches[i].identifier);
-
-    // if (idx >= 0) {
-		// if (ongoingTouches[idx].pageX > -1 && ongoingTouches[idx].pageX < 80){
-			// var color = colorForTouch(touches[i]);
-			// ctx.beginPath();
-			// ctx.arc(touches[i].pageX, touches[i].pageY, 4, 0, 2 * Math.PI, false);  // a circle at the start
-			// ctx.fillStyle = color;
-			// ctx.fill();
-		// }
-	// }
+   for (var i = 0; i < touches.length; i++) {
+    log("touchstart:" + i + "...");
+    ongoingTouches.push(copyTouch(touches[i]));
+    // var color = colorForTouch(touches[i]);
+    // ctx.beginPath();
+    // ctx.arc(touches[i].pageX, touches[i].pageY, 4, 0, 2 * Math.PI, false);  // a circle at the start
+    // ctx.fillStyle = color;
+    // ctx.fill();
     // log("touchstart:" + i + ".");
-  // }
+  }
 }
 
 function handleMove(evt) {
