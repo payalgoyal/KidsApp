@@ -154,13 +154,13 @@ function handleMove(evt) {
 	  list[0].traversed[leftIndex] = true;
 	  log(list[0].leftColumn[leftIndex] + list[0].traversed[leftIndex]);
 	  correct = 1;
-	  imageData = context.getImageData(0,0,el.width,el.height);
+	  // imageData = context.getImageData(0,0,el.width,el.height);
 	  // leftIndex = null;
 	  // rightIndex = null;
   }
   else{
 	  correct = 0;
-	  imageData = context.putImageData(0,0,el.width,el.height);
+	  // imageData = context.putImageData(0,0,el.width,el.height);
 	  // leftIndex = null;
 	  // rightIndex = null;
   }
