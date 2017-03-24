@@ -83,7 +83,7 @@ function handleMove(evt) {
     if (idx >= 0) {
       // log("continuing touch "+idx);
 	  if (leftIndex == null){
-		  if (ongoingTouches[idx].pageX > 20 && ongoingTouches[idx].pageX < 70){
+		  if (ongoingTouches[idx].pageX > -1 && ongoingTouches[idx].pageX < 80){
 			  if (end == 0){
 				  if(touches[i].pageY >= 0 && touches[i].pageY <= 60){
 					  leftIndex = 0;
@@ -129,7 +129,7 @@ function handleMove(evt) {
 		 }
 	  }
 	  if (leftIndex != null && list[0].traversed[leftIndex] == false){
-		  if (ongoingTouches[idx].pageX > 40 && ongoingTouches[idx].pageX < 301){
+		  if (ongoingTouches[idx].pageX > -1 && ongoingTouches[idx].pageX < 255){
 			  ctx.beginPath();
 			   // log("ctx.moveTo(" + ongoingTouches[idx].pageX + ", " + ongoingTouches[idx].pageY + ");");
 			  ctx.moveTo(ongoingTouches[idx].pageX, ongoingTouches[idx].pageY);
@@ -194,6 +194,7 @@ function handleEnd(evt) {
     var idx = ongoingTouchIndexById(touches[i].identifier);
 
     if (idx >= 0) {
+		if ((ongoingTouches[idx].pageX > 250) && (ongoingTouches[idx].pageX < 260)){
       ctx.lineWidth = 4;
       ctx.fillStyle = color;
       ctx.beginPath();
