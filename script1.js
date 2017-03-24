@@ -195,13 +195,14 @@ function handleEnd(evt) {
 
     if (idx >= 0) {
 		if ((ongoingTouches[idx].pageX > 250) && (ongoingTouches[idx].pageX < 260)){
-      ctx.lineWidth = 4;
-      ctx.fillStyle = color;
-      ctx.beginPath();
-      ctx.moveTo(ongoingTouches[idx].pageX, ongoingTouches[idx].pageY);
-      ctx.lineTo(touches[i].pageX, touches[i].pageY);
-      ctx.fillRect(touches[i].pageX - 4, touches[i].pageY - 4, 8, 8);  // and a square at the end
-      ongoingTouches.splice(idx, 1);  // remove it; we're done
+			  ctx.lineWidth = 4;
+			  ctx.fillStyle = color;
+			  ctx.beginPath();
+			  ctx.moveTo(ongoingTouches[idx].pageX, ongoingTouches[idx].pageY);
+			  ctx.lineTo(touches[i].pageX, touches[i].pageY);
+			  ctx.fillRect(touches[i].pageX - 4, touches[i].pageY - 4, 8, 8);  // and a square at the end
+			  ongoingTouches.splice(idx, 1);  // remove it; we're done
+		}
     } else {
       log("can't figure out which touch to end");
     }
