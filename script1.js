@@ -105,8 +105,8 @@ function handleMove(evt) {
 			  // }
 		  }
 	  }
-	  if (rightIndex == null){
-		  if ((ongoingTouches[idx].pageX > 250) && (ongoingTouches[idx].pageX < 260)){
+	  if (rightIndex == null && leftIndex != null){
+		  if ((ongoingTouches[idx].pageX > 250)){
 			  // if (end == 0){
 				  var yDiv = touches[i].pageY /60;
 				  var yMod = touches[i].pageY %60;
