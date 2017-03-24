@@ -57,6 +57,8 @@ function handleStart(evt) {
   var touches = evt.changedTouches;
   imageData = ctx.getImageData(0,0,el.width,el.height);
   end = 0;
+  leftIndex = null;
+  rightIndex = null;
   for (var i = 0; i < touches.length; i++) {
     // log("touchstart:" + i + "...");
     ongoingTouches.push(copyTouch(touches[i]));
@@ -109,8 +111,8 @@ function handleMove(evt) {
 			  // }
 		  }
 	  }
-	  if (rightIndex == null){
-		  if ((ongoingTouches[idx].pageX > 250)){
+	  if (rightIndex == null && leftIndex != null){
+		  if ((ongoingTouches[idx].pageX > 250) && (ongoingTouches[idx].pageX < 260)){
 			  // if (end == 0){
 				  var yDiv = touches[i].pageY /60;
 				  var yMod = touches[i].pageY %60;
