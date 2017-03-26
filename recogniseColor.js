@@ -3,7 +3,7 @@ var queryLetter;
 	var list = [];
 
 function colorRecognise(){
-	var queryArea = document.getElementById("queryArea");
+	var queryArea = document.getElementById("play_area");
 	list.push({key: "RED",
 		optionValue: ["Red","Blue","Green"]});
 		
@@ -13,6 +13,7 @@ function colorRecognise(){
 	list.push({key: "GREEN",
 		optionValue: ["Red","Blue","Green"]});
 	
+	optionKeys = [];
 	ran = Math.floor(Math.random() * list.length);
 	for (var inc = 0;inc<list[ran].optionValue.length;inc++){
 		optionKeys.push(list[ran].optionValue[inc]);
@@ -20,7 +21,18 @@ function colorRecognise(){
 	document.getElementById("header").innerHTML = "Identify Color";
 	queryLetter = list[ran].key;
 	
-	queryArea.setAttribute("style","background-color:"+queryLetter);
+	queryArea.setAttribute("style","margin-left:auto;margin-right:auto;width:50%;height:50%;background-color:"+queryLetter);
+	
+	var gameArea = document.getElementById("game_area");
+	var ansDiv = document.createElement("div");
+	ansDiv.setAttribute("id","ansDiv");
+	// ansDiv.setAttribute("style","width:30%;height:100%;background-color:green;float:right");
+	gameArea.appendChild(ansDiv);
+	
+	var ansPara = document.createElement("p");
+	ansPara.setAttribute("id","ansPara");
+	
+	ansDiv.appendChild(ansPara);
 	
 	keyLength = optionKeys.length;
 	
