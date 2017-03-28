@@ -53,18 +53,15 @@ function correctAns(){
 	var cat = query.split('=')[1];
 	
 	if (cat == "1"){
-		alphabetsIdentify();
-	}
-	if (cat == "2"){
 		window.document.location.href = "match.html";
 	}
-	if (cat == "3"){
+	if (cat == "2"){
 		fruitsRecognise();
 	}
-	if (cat == "4"){
+	if (cat == "3"){
 		colorRecognise();
 	}
-	if (cat == "5"){
+	if (cat == "4"){
 		counting();
 	}
 }

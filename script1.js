@@ -38,6 +38,7 @@ function fillValues(){
 		
 		rCol.appendChild(aPara);
 	}
+	startup();
 }
 function startup() {
   el = document.getElementsByTagName("canvas")[0];

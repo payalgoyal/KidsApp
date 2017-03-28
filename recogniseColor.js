@@ -51,8 +51,8 @@ function colorRecognise(){
 	}
 		
 	// document.getElementById("footer").setAttribute("style","width:50%;margin-left:25%;margin-right:25%");
-	var pAgain = document.getElementById('play_again');
-		pAgain.setAttribute("style","visibility:hidden");
+	// var pAgain = document.getElementById('play_again');
+		// pAgain.setAttribute("style","visibility:hidden");
 
 }
 

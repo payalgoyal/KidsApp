@@ -1,12 +1,12 @@
 
 <html>
 <head>
-	<title>My HangMan game</title>
+	<title>My Learning App</title>
 	<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1">
 	<script src="script.js"></script>
 	<script src="alphabets.js"></script>
 	<script src="matchTheColumn.js"></script>
-	<script src="recogniseFruits.js"></script>
+	<script src="guessIt.js"></script>
 	<script src="recogniseColor.js"></script>
 	<script src="counting.js"></script>
 	<!-- <script src="brandList.js"></script>
@@ -40,18 +40,18 @@
 		<!-- HANGMAN -->
 	</div>
 	<div id="content">
-		<div id="streaks" style="height:7%">
+		<!-- <div id="streaks" style="height:7%">
 			<span id="bestStreak" class="streak">Best Streak:<span id="best">0</span></span>
 			<span id="currStreak" class="streak">Current streak:<span id="current">0</span></span>
 		</div>
-
+ -->
 		<div id="game_area">
 			<div id="play_area">
 			
 			</div>
 		</div> 
 		<div id="footer">
-				<button type="button" id="play_again" onclick="playAgain()" value="Play Again">Next</button><br>
+				<!-- <button type="button" id="play_again" onclick="playAgain()" value="Play Again">Next</button><br> -->
 				<div id="keyBoard"></div>
 		</div>
 	</div>
@@ -66,30 +66,25 @@
 		<!-- var wrapWidth = wrapEle.offsetWidth; -->
 		<!-- var lettWidth = 0.08 * wrapWidth; -->
 		<!-- headEle.setAttribute("style","letter-spacing:"+lettWidth+"px"); -->
-		if(localStorage.getItem("bestS") == null){
-			document.getElementById('best').innerHTML = 0;
-		}
-		else{
-			document.getElementById('best').innerHTML = localStorage.getItem("bestS");
-		}
+		
 		
 		var queryString = new Array();
 		var query = window.location.search.split('?')[1];
 		var cat = query.split('=')[1];
 		
+		<!-- if (cat == "1"){ -->
+			<!-- alphabetsIdentify(); -->
+		<!-- } -->
 		if (cat == "1"){
-			alphabetsIdentify();
-		}
-		if (cat == "2"){
 			window.document.location.href = "match.html";
 		}
-		if (cat == "3"){
-			fruitsRecognise();
+		if (cat == "2"){
+			guessIt();
 		}
-		if (cat == "4"){
+		if (cat == "3"){
 			colorRecognise();
 		}
-		if (cat == "5"){
+		if (cat == "4"){
 			counting();
 		}
 		<!-- if (cat == "6"){ -->
