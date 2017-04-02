@@ -34,6 +34,11 @@ function recogniseAnimals(){
 	ansLength = optionKeys.length;
 	blankCount = ansLength;
 	
+	var blankSpanAnswered = document.getElementsByClassName("blank");
+	while(blankSpanAnswered[0]){
+		blankSpanAnswered[0].parentNode.removeChild(blankSpanAnswered[0]);
+	}
+	
 	for (var i =0;i<ansLength;i++){
 		var ansSpan = document.createElement("span");
 				ansSpan.setAttribute("class","blank");

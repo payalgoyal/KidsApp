@@ -28,6 +28,11 @@ function guessIt(){
 	ansLength = optionKeys.length;
 	blankCount = ansLength;
 	
+	var blankSpanAnswered = document.getElementsByClassName("blank");
+	while(blankSpanAnswered[0]){
+		blankSpanAnswered[0].parentNode.removeChild(blankSpanAnswered[0]);
+	}
+	
 	for (var i =0;i<ansLength;i++){
 		var ansSpan = document.createElement("span");
 				ansSpan.setAttribute("class","blank");
@@ -60,17 +65,17 @@ function guessIt(){
 			var keyBrd = document.getElementById("keyBoard");
 			keyBoard.appendChild(key);
 		}
-		for (keys = 48; keys <= 57; keys++){
-			var key = document.createElement("button");
-			key.setAttribute("type","button");
-			key.setAttribute("value","&#"+keys);
-			key.setAttribute("class","keys");
-			key.setAttribute("onclick","registerEnteredKey(this)");
-			key.innerHTML = String.fromCharCode(keys);
+		// for (keys = 48; keys <= 57; keys++){
+			// var key = document.createElement("button");
+			// key.setAttribute("type","button");
+			// key.setAttribute("value","&#"+keys);
+			// key.setAttribute("class","keys");
+			// key.setAttribute("onclick","registerEnteredKey(this)");
+			// key.innerHTML = String.fromCharCode(keys);
 			
-			var keyBrd = document.getElementById("keyBoard");
-			keyBrd.appendChild(key);
-		}
+			// var keyBrd = document.getElementById("keyBoard");
+			// keyBrd.appendChild(key);
+		// }
 		
 	// document.getElementById("footer").setAttribute("style","width:50%;margin-left:25%;margin-right:25%");
 	// var pAgain = document.getElementById('play_again');

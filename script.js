@@ -92,7 +92,7 @@ function correctAns(){
 		window.document.location.href = "match.html";
 	}
 	if (cat == "2"){
-		fruitsRecognise();
+		guessIt();
 	}
 	if (cat == "3"){
 		colorRecognise();
