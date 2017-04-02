@@ -14,14 +14,13 @@ function registerEnteredKey(key){
 		playAudio("correctLetter");
 		// var queryArea = document.getElementById("play_area");
 		// queryArea.setAttribute("style","width:0%")
-		$("<div/>", {
-			id: "correctState",
-			text: "Hurray!!!You are correct",
-			// class: 'verticalM',
-			
-			// style: "height: '400px',margin-top= 0px",
-			// width: '70px',
-	}).appendTo(document.getElementById("game_area"));
+		var corr = document.createElement("img");
+		corr.setAttribute("src","images/correct.png");
+		corr.setAttribute("id","correctState");
+		
+		var gameArea = document.getElementById("game_area");
+		gameArea.appendChild(corr);
+		
 		setTimeout(function(){
 			var ansPara = document.getElementById("ansPara");
 			ansPara.innerHTML = "";
@@ -56,14 +55,12 @@ var compareAns=function(queryLetter,enteredKey) {
 		playAudio("correctLetter");
 		// var queryArea = document.getElementById("play_area");
 		// queryArea.setAttribute("style","width:0%")
-		$("<div/>", {
-			id: "correctState",
-			text: "Hurray!!!You are correct",
-			// class: 'verticalM',
-			
-			// style: "height: '400px',margin-top= 0px",
-			// width: '70px',
-	}).appendTo(document.getElementById("game_area"));
+		var corr = document.createElement("img");
+		corr.setAttribute("src","images/correct.png");
+		corr.setAttribute("id","correctState");
+		
+		var gameArea = document.getElementById("game_area");
+		gameArea.appendChild(corr);
 		setTimeout(function(){
 			var ansPara = document.getElementById("ansPara");
 			ansPara.innerHTML = "";
@@ -76,6 +73,19 @@ var compareAns=function(queryLetter,enteredKey) {
 	}
 	else{
 		playAudio("wrongLetter");
+		var corr = document.createElement("img");
+		corr.setAttribute("src","images/incorrect.png");
+		corr.setAttribute("id","correctState");
+		
+		var gameArea = document.getElementById("game_area");
+		gameArea.appendChild(corr);
+		setTimeout(function(){
+			var ansPara = document.getElementById("ansPara");
+			ansPara.innerHTML = "";
+			var cS = document.getElementById("correctState");
+			var gA = document.getElementById("game_area");
+			gA.removeChild(cS);
+		}, 1000);
 	}	
 }
 
