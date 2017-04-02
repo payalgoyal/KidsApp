@@ -12,8 +12,8 @@ function registerEnteredKey(key){
 			keysEle[keyEle].disabled = true;
 		}
 		playAudio("correctLetter");
-		var queryArea = document.getElementById("play_area");
-		queryArea.setAttribute("style","width:0%")
+		// var queryArea = document.getElementById("play_area");
+		// queryArea.setAttribute("style","width:0%")
 		$("<div/>", {
 			id: "correctState",
 			text: "Hurray!!!You are correct",
@@ -54,8 +54,8 @@ function registerKey(keyEntered){
 var compareAns=function(queryLetter,enteredKey) {
 	if (enteredKey == queryLetter){
 		playAudio("correctLetter");
-		var queryArea = document.getElementById("play_area");
-		queryArea.setAttribute("style","width:0%")
+		// var queryArea = document.getElementById("play_area");
+		// queryArea.setAttribute("style","width:0%")
 		$("<div/>", {
 			id: "correctState",
 			text: "Hurray!!!You are correct",

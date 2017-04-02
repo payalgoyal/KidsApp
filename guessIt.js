@@ -18,8 +18,8 @@ function guessIt(){
 	queryLetter = list[ran].key;
 	
 	var queryArea = document.getElementById("play_area");
-	queryArea.innerHTML = queryLetter;
 	queryArea.setAttribute("style","font-size:2em");
+	queryArea.innerHTML = queryLetter;
 	
 	optionKeys = list[ran].optionValue;
 	

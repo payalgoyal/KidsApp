@@ -16,12 +16,16 @@ function recogniseAnimals(){
 		optionValue: "CAT"});
 	
 	document.getElementById("header").innerHTML = "ANIMALS";
+	if (document.getElementById("play_area").children.length > 0){
+		document.getElementById("play_area").removeChild(document.getElementById("play_area").children[0]);
+	}
 	
 	ran = Math.floor(Math.random() * list.length);
 	
 	queryLetter = list[ran].key;
 	
 	var queryArea = document.getElementById("play_area");
+	queryArea.setAttribute("style","width:110%");
 	var img = document.createElement("img");
 	img.setAttribute("src",animalSrc[queryLetter]);
 	img.setAttribute("style","width:40%;height:100%");
