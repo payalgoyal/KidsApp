@@ -1,6 +1,7 @@
 function registerEnteredKey(key){
 	for (var l = 0;l<optionKeys.length;l++){
-		if (key.innerHTML == optionKeys[l]){
+		var ansSpan = document.getElementById("blank"+l);
+		if (key.innerHTML == optionKeys[l] && (ansSpan.innerHTML == "_ ")){
 			var bSpan = document.getElementById("blank"+l);
 			bSpan.innerHTML = key.innerHTML+" ";
 			blankCount--;
