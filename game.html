@@ -11,6 +11,7 @@
 	<script src="counting.js"></script>
 	<script src="recogniseAnimals.js"></script>
 	<script src="numberSpell.js"></script>
+	<script src="functionalMatch.js"></script>
 	
 	<!-- <script src="brandList.js"></script>
 	<script src="inventionList.js"></script> -->
@@ -79,7 +80,7 @@
 			<!-- alphabetsIdentify(); -->
 		<!-- } -->
 		if (cat == "1"){
-			window.document.location.href = "match.html";
+			window.document.location.href = "match.html?category=1";
 		}
 		if (cat == "2"){
 			guessIt();
@@ -95,6 +96,9 @@
 		}
 		if (cat == "6"){
 			numberSpell();
+		}
+		if (cat == "7"){
+			window.document.location.href = "match.html?category=7";
 		}
 		<!-- if (cat == "7"){ -->
 			<!-- inventionList(); -->

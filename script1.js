@@ -2,32 +2,61 @@ var leftIndex = null;
 var rightIndex = null;
 var list = [];
 var rightValues = [];
+var leftValues = [];
 var end = 0;
 var el;
 var correct = 0;
 var img = [];
+var leftImg = [];
 
-function matchTheColumn(){
-	img.push({src: ["images/apple.jpg","images/ball.jpg","images/cat.jpg","images/dog.jpg","images/elephant.jpg"]})
-	rightValues.push("Apple","Ball","Cat","Doll","Elephant");
-	list.push({leftColumn: ["A","B","C","D","E"],
-		rightColumn: [3,2,5,1,4],
-		rightAns:[4,2,1,5,3],
-		traversed:[false,false,false,false,false]});
-	fillValues();
+function matchTheColumn(cat){
+	if (cat == 1){
+		img.push({src: ["images/apple.jpg","images/ball.jpg","images/cat.jpg","images/dog.jpg","images/elephant.jpg"]})
+		rightValues.push("Apple","Ball","Cat","Doll","Elephant");
+		list.push({leftColumn: ["A","B","C","D","E"],
+			rightColumn: [3,2,5,1,4],
+			rightAns:[4,2,1,5,3],
+			traversed:[false,false,false,false,false]});
+	}
+	if (cat == 7){
+		leftImg.push({src: ["images/nose.jpg","images/ear.jpg","images/eyes.jpg","images/hands.jpg","images/tongue.jpg"]});
+		leftValues.push("nose","ear","eyes","hands","tongue");
+		img.push({src: ["images/gloves.jpg","images/mango.jpg","images/bell.png","images/rose.jpg","images/goggles.jpg"]});
+		rightValues.push("gloves","mango","bell","rose","goggles");
+		list.push({leftColumn: [1,2,3,4,5],
+			rightColumn: [1,2,3,4,5],
+			rightAns:[4,3,5,1,2],
+			traversed:[false,false,false,false,false]});
+	}
+	fillValues(cat);
 	list[0].rightAns[leftIndex]
 }
 
-function fillValues(){
-	for (var i=0;i<list[0].leftColumn.length;i++){
-		var lCol = document.getElementById("questionAlpha");
-	
-		var qPara = document.createElement("p");
-		qPara.setAttribute("style","font-size:50; width:50px;height:60");
-		qPara.innerHTML = list[0].leftColumn[i];
+function fillValues(cat){
+	if (cat == 1){
+		for (var i=0;i<list[0].leftColumn.length;i++){
+			var lCol = document.getElementById("questionAlpha");
 		
-		lCol.appendChild(qPara);
+			var qPara = document.createElement("p");
+			qPara.setAttribute("style","font-size:50; width:50px;height:60");
+			qPara.innerHTML = list[0].leftColumn[i];
+			
+			lCol.appendChild(qPara);
+		}
 	}
+	if (cat == 7){
+		for (var i=0;i<list[0].leftColumn.length;i++){
+			var lCol = document.getElementById("questionAlpha");
+		
+			var qPara = document.createElement("img");
+			qPara.setAttribute("style","width:100px;height:60");
+			qPara.setAttribute("src",leftImg[0].src[list[0].leftColumn[i]-1]);
+			qPara.innerHTML = leftValues[list[0].leftColumn[i]-1];
+			
+			lCol.appendChild(qPara);
+		}
+	}
+	
 	for (var i=0;i<list[0].rightColumn.length;i++){
 		var rCol = document.getElementById("answerImage");
 	
