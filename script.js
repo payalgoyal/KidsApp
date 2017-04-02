@@ -103,6 +103,9 @@ function correctAns(){
 	if (cat == "5"){
 		recogniseAnimals();
 	}
+	if (cat == "6"){
+		numberSpell();
+	}
 }
 
 var my_media;
