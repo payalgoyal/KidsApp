@@ -1,25 +1,31 @@
 var list = [];
+var animalSrc = [];
 var optionKeys;
 var blankCount;
-function guessIt(){
-	list.push({key: "Used to hear",
-		optionValue: "EARS"});
+function recogniseAnimals(){
+	animalSrc.push("images/cat.jpg",
+			"images/dog.jpg",
+			"images/elephant.jpg")
+	list.push({key: 2,
+		optionValue: "ELEPHANT"});
 		
-	list.push({key: "Used to see",
-		optionValue: "EYES"});
+	list.push({key: 1,
+		optionValue: "DOG"});
 	
-	list.push({key: "Used to speak",
-		optionValue: "MOUTH"});
+	list.push({key: 0,
+		optionValue: "CAT"});
 	
-	document.getElementById("header").innerHTML = "Guess It";
+	document.getElementById("header").innerHTML = "ANIMALS";
 	
 	ran = Math.floor(Math.random() * list.length);
 	
 	queryLetter = list[ran].key;
 	
 	var queryArea = document.getElementById("play_area");
-	queryArea.innerHTML = queryLetter;
-	queryArea.setAttribute("style","font-size:2em");
+	var img = document.createElement("img");
+	img.setAttribute("src",animalSrc[queryLetter]);
+	img.setAttribute("style","width:40%;height:100%");
+	queryArea.appendChild(img);
 	
 	optionKeys = list[ran].optionValue;
 	
@@ -59,17 +65,6 @@ function guessIt(){
 			
 			var keyBrd = document.getElementById("keyBoard");
 			keyBoard.appendChild(key);
-		}
-		for (keys = 48; keys <= 57; keys++){
-			var key = document.createElement("button");
-			key.setAttribute("type","button");
-			key.setAttribute("value","&#"+keys);
-			key.setAttribute("class","keys");
-			key.setAttribute("onclick","registerEnteredKey(this)");
-			key.innerHTML = String.fromCharCode(keys);
-			
-			var keyBrd = document.getElementById("keyBoard");
-			keyBrd.appendChild(key);
 		}
 		
 	// document.getElementById("footer").setAttribute("style","width:50%;margin-left:25%;margin-right:25%");
