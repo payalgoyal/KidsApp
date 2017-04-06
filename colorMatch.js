@@ -69,7 +69,9 @@ function queryMove(evt) {
   evt.preventDefault();
   var touches = evt.changedTouches[0];
   
-  var distX = parseInt(touches.clientX);
+  document.getElementById("footer").setAttribute("style","top:"+parseInt(touches.clientY)+"px;left:"+parseInt(touches.clientX)+"px");
+  
+  // var distX = parseInt(touches.clientX);
 
   // for (var i = 0; i < touches.length; i++) {
     // var color = colorForTouch(touches[i]);
