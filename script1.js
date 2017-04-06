@@ -53,6 +53,8 @@ function fillValues(cat){
 			qPara.setAttribute("src",leftImg[0].src[list[0].leftColumn[i]-1]);
 			qPara.innerHTML = leftValues[list[0].leftColumn[i]-1];
 			
+	
+				// ans.setAttribute("style","color:green;font-size:50; width:250px;height:60");
 			lCol.appendChild(qPara);
 		}
 	}

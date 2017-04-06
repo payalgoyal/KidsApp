@@ -1,0 +1,105 @@
+var queryLetter;
+	optionKeys = [];
+	var list = [];
+	var queryImages = [];
+	var boxImages = [];
+
+function colorMatch(){
+	queryImages.push("images/RedStar.png","images/BlueStar.png");
+	
+	var queryArea = document.getElementById("play_area");
+	list.push({key: "RED",
+		optionValue: ["images/RedBox.png","images/BlueBox.png"]});
+		
+	list.push({key: "BLUE",
+		optionValue: ["images/RedBox.png","images/BlueBox.png"]});
+	
+	optionKeys = [];
+	ran = Math.floor(Math.random() * list.length);
+	for (var inc = 0;inc<list[ran].optionValue.length;inc++){
+		optionKeys.push(list[ran].optionValue[inc]);
+	}
+	document.getElementById("header").innerHTML = "Match Color";
+	
+	var playArea = document.getElementById("play_area");
+	
+	for (var box=0;box<list[ran].optionValue.length;box++){
+		var boxImg = document.createElement("img");
+		boxImg.setAttribute("src",list[ran].optionValue[box]);
+		boxImg.setAttribute("style","width:10%;height:80%");
+	
+		playArea.appendChild(boxImg);
+	}
+	
+	var foot = document.getElementById("footer");
+	
+	var queryImg = document.createElement("img");
+	queryImg.setAttribute("src",queryImages[ran]);
+	queryImg.setAttribute("id","queryImg");
+	foot.appendChild(queryImg);
+	
+	queryImgEvents();
+}
+
+function queryImgEvents() {
+  query = document.getElementById("queryImg");
+  query.addEventListener("touchstart", queryStart, false);
+  // query.addEventListener("touchend", queryEnd, false);
+  // query.addEventListener("touchcancel", queryCancel, false);
+  query.addEventListener("touchmove", queryMove, false);
+}
+
+var ongoingTouches = [];
+var startX = 0;
+var startY = 0;
+var distX = 0;
+var distY = 0;
+
+function queryStart(evt){
+	 evt.preventDefault();
+	 var touches = evt.changedTouches[0];
+	 startX = parseInt(touches.clientX);
+	 startY = parseInt(touches.clientY);
+	 // for (var i = 0; i < touches.length; i++) {
+		// ongoingTouches.push(copyTouch(touches[i]));
+	 // }
+}
+
+function queryMove(evt) {
+  evt.preventDefault();
+  var touches = evt.changedTouches[0];
+  
+  var distX = parseInt(touches.clientX);
+
+  // for (var i = 0; i < touches.length; i++) {
+    // var color = colorForTouch(touches[i]);
+    // var idx = ongoingTouchIndexById(touches[i].identifier);
+
+    // if (idx >= 0) {
+		// // if (ongoingTouches[idx].pageX > -1 && ongoingTouches[idx].pageX < 300){
+			  // // ctx.beginPath();
+			  // var ctx = document.getElementById("queryImg");
+			  // ctx.moveTo(ongoingTouches[idx].pageX, ongoingTouches[idx].pageY);
+			  // // ctx.lineTo(touches[i].pageX, touches[i].pageY);
+			  // // ctx.lineWidth = 4;
+			  // // ctx.strokeStyle = color;
+			  // // ctx.stroke();
+
+			  // ongoingTouches.splice(idx, 1, copyTouch(touches[i]));  // swap in the new touch record
+		// // }
+	
+    // } else {
+      // log("can't figure out which touch to continue");
+    // }
+  // }
+  // if (rightIndex != null && ((rightIndex+1) == list[0].rightAns[leftIndex])){
+	  // log("Correct Match for "+list[0].leftColumn[leftIndex]);
+	  // list[0].traversed[leftIndex] = true;
+	  // log(list[0].leftColumn[leftIndex] + list[0].traversed[leftIndex]);
+	  // correct = 1;
+  // }
+  // else{
+	  // correct = 0;
+  // }
+}
+
