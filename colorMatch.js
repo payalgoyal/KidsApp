@@ -69,7 +69,9 @@ function queryMove(evt) {
   evt.preventDefault();
   var touches = evt.changedTouches[0];
   
-  document.getElementById("footer").setAttribute("style","top:"+parseInt(touches.clientY)+"px;left:"+parseInt(touches.clientX)+"px");
+  distX = parseInt(touches.clientX) - startX;
+  distY = parseInt(touches.clientY) - startY;
+  document.getElementById("footer").setAttribute("style","bottom:"+distY+"px;left:"+distX+"px");
   
   // var distX = parseInt(touches.clientX);
 
