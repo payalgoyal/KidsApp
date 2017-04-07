@@ -1,5 +1,6 @@
 var queryLetter;
 	optionKeys = [];
+	
 	var list = [];
 	var queryImages = [];
 	var boxImages = [];
@@ -9,10 +10,12 @@ function colorMatch(){
 	
 	var queryArea = document.getElementById("play_area");
 	list.push({key: "RED",
-		optionValue: ["images/RedBox.png","images/BlueBox.png"]});
+		optionValue: ["images/RedBox.png","images/BlueBox.png"],
+		correct: 0});
 		
 	list.push({key: "BLUE",
-		optionValue: ["images/RedBox.png","images/BlueBox.png"]});
+		optionValue: ["images/RedBox.png","images/BlueBox.png"],
+		correct: 1});
 	
 	optionKeys = [];
 	ran = Math.floor(Math.random() * list.length);
@@ -27,6 +30,7 @@ function colorMatch(){
 		var boxImg = document.createElement("img");
 		boxImg.setAttribute("src",list[ran].optionValue[box]);
 		boxImg.setAttribute("style","width:10%;height:80%");
+		boxImg.setAttribute("id","queryCont"+box);
 	
 		playArea.appendChild(boxImg);
 	}
@@ -72,38 +76,19 @@ function queryMove(evt) {
   distX = parseInt(touches.clientX) - startX;
   distY = startY - parseInt(touches.clientY);
   document.getElementById("footer").setAttribute("style","bottom:"+distY+"px;left:"+distX+"px");
-  
-  // var distX = parseInt(touches.clientX);
-
-  // for (var i = 0; i < touches.length; i++) {
-    // var color = colorForTouch(touches[i]);
-    // var idx = ongoingTouchIndexById(touches[i].identifier);
-
-    // if (idx >= 0) {
-		// // if (ongoingTouches[idx].pageX > -1 && ongoingTouches[idx].pageX < 300){
-			  // // ctx.beginPath();
-			  // var ctx = document.getElementById("queryImg");
-			  // ctx.moveTo(ongoingTouches[idx].pageX, ongoingTouches[idx].pageY);
-			  // // ctx.lineTo(touches[i].pageX, touches[i].pageY);
-			  // // ctx.lineWidth = 4;
-			  // // ctx.strokeStyle = color;
-			  // // ctx.stroke();
-
-			  // ongoingTouches.splice(idx, 1, copyTouch(touches[i]));  // swap in the new touch record
-		// // }
-	
-    // } else {
-      // log("can't figure out which touch to continue");
-    // }
-  // }
-  // if (rightIndex != null && ((rightIndex+1) == list[0].rightAns[leftIndex])){
-	  // log("Correct Match for "+list[0].leftColumn[leftIndex]);
-	  // list[0].traversed[leftIndex] = true;
-	  // log(list[0].leftColumn[leftIndex] + list[0].traversed[leftIndex]);
-	  // correct = 1;
-  // }
-  // else{
-	  // correct = 0;
-  // }
 }
 
+function queryEnd(evt){
+	evt.preventDefault();
+	var touches = evt.changedTouches[0];
+	
+	correctAnsId = list[ran].correct;
+	var correctCont = $("#queryCont"+correctAnsId);
+	if ((touches.clientX > correctCont.position().left && touches.clientX < correctCont.position().left+correctCont.width())
+		&& (touches.clientY > correctCont.position().top && touches.clientY < correctCont.position().top+correctCont.height())){
+			colorMatch();
+		}
+	else{
+		document.getElementById("footer").setAttribute("style","bottom:"+0+"px;left:"+0+"px");
+	}
+}
