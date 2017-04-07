@@ -70,7 +70,7 @@ function queryMove(evt) {
   var touches = evt.changedTouches[0];
   
   distX = parseInt(touches.clientX) - startX;
-  distY = parseInt(touches.clientY) - startY;
+  distY = startY - parseInt(touches.clientY);
   document.getElementById("footer").setAttribute("style","bottom:"+distY+"px;left:"+distX+"px");
   
   // var distX = parseInt(touches.clientX);
