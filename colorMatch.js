@@ -48,7 +48,7 @@ function colorMatch(){
 function queryImgEvents() {
   query = document.getElementById("queryImg");
   query.addEventListener("touchstart", queryStart, false);
-  // query.addEventListener("touchend", queryEnd, false);
+  query.addEventListener("touchend", queryEnd, false);
   // query.addEventListener("touchcancel", queryCancel, false);
   query.addEventListener("touchmove", queryMove, false);
 }
