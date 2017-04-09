@@ -11,6 +11,7 @@ function colorMatch(){
 		playArea.removeChild(playArea.firstChild);
 	}
 	var foot = document.getElementById("footer");
+	foot.setAttribute("style","bottom:"+0+"px;left:"+0+"px");
 	while (foot.firstChild){
 		foot.removeChild(foot.firstChild);
 	}
